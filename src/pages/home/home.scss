@@ -1,0 +1,33 @@
+page-home.ion-page {
+    .title-text {
+        font-size: 18px;
+        line-height: 21px;
+        color: #116F76;
+        text-align: center;
+        font-weight: 300;
+        font-weight: bold;
+    }
+
+    .header-text {
+        font-size: 15px;
+        line-height: 21px;
+        color: #FFFFFF;
+        text-align: center;
+        font-weight: 300;
+        text-shadow: 0 1px 2px #000;
+    }
+
+    .invalid {
+        border: 1px solid #ea6153;
+    }
+    .foot {
+        position: absolute; bottom: 0px;
+    }
+
+    .item-complex .item-content, .item{
+        border-bottom:1px solid #369;
+    }
+
+    text-align: center;
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}

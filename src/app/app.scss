@@ -1,0 +1,161 @@
+// http://ionicframework.com/docs/v2/theming/
+
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300');
+@import "ionic.globals";
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+/* Master Styles 
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+}
+
+.bold-header {
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    font-weight: 300;
+    font-weight: bold;
+}
+
+.background-header-text {
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 300;
+    font-weight: bold;
+}
+
+.menu-item-header-text {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 300;
+    font-weight: bold;
+}
+
+.small-padding-top-bottom{
+   padding-top: .1em; 
+   padding-bottom: .1em;
+}
+
+$fab-size: 30px;
+$fab-mini-size: 30px;
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+body, input[text], button {
+  color: #888;
+}
+.background, .background .pane, .background .item, .background .item-complex .item-content {
+    background-color: $dark-color;
+}
+
+/* . . . */
+/* everywhere else */
+* {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+}
+
+.padding-big-top {
+    padding-top: 3rem;
+}
+
+.padded-footer {
+  padding-bottom: 6rem;
+}
+
+ion-header {
+  height: 20px !important;
+  background-color: $dark-color;
+}
+
+ion-content{
+  &[disable-scroll] {
+    overflow-y: hidden;
+  }
+}
+
+.bottom-border {
+  border-bottom:0.5px solid white;
+}
+
+.bottom-border-purple {
+  border-bottom:0.5px solid $dark-color;
+}
+
+.title {
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 300;
+    text-shadow: 0 1px 2px #000;
+}
+
+.no-scroll .scroll-content{
+      overflow: hidden;
+}
+
+.badge-background {
+  background: #036318;
+  border-radius: 40px;
+}
+
+.color-white {
+  color: white;
+}
+
+.red {
+    background-color: #933547;
+}
+
+.bar-header{
+  height: 40px !important
+}
+
+.light {
+  color: $light-color;
+}
+
+.light-bg {
+  background-color: $light-color;
+}
+
+.dark {
+  color: $dark-color;
+}
+
+.dark-bg {
+  background-color: $dark-color;
+}
