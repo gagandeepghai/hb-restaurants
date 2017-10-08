@@ -3,7 +3,11 @@ import { FormsModule }   from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { UserService } from '../providers/user-service'
+import { UserService } from '../providers/user-service';
+
+//Mocks
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from '../mocks/in-memory-data.service';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -18,7 +22,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    IonicModule.forRoot(MyApp,{
+      menuType: 'push',
+      platforms: {
+        ios: {
+          menuType: 'overlay',
+        }
+      }
+    })
   ],
   declarations: [
     MyApp,
