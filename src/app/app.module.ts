@@ -3,7 +3,9 @@ import { FormsModule }   from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+//Services
 import { UserService } from '../providers/user-service';
+import { RestaurantService } from '../providers/restaurant-service';
 
 //Mocks
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -52,7 +54,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     LocatePage,
     MenuPage
   ],
-  providers: [UserService,
+  providers: [UserService, RestaurantService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
