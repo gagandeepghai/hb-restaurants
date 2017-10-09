@@ -2,4 +2,13 @@
 </ion-header>
 <ion-content class="no-scroll light-bg">
   MENU
+  <br>
+  <br>
+  <div *ngFor="let heading of menuCategories">
+    <ion-card light-bg>
+      <ion-card-header>
+        {{heading}}
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>

@@ -33,6 +33,10 @@ export class MenuPage implements OnInit {
         console.log(JSON.stringify(this.menuCategories));
     }
 
+    getItems(category) {
+        return this.menu.menuObject[category];
+    }
+
     public showLoading(content: string): Loading {
         if (this.loadingCtrl) {
             let loading = this.loadingCtrl.create({
