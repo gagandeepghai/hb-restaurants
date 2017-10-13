@@ -11,13 +11,15 @@ page-menu.ion-page {
     .menu-header {
         font-size: 18px;
         font-weight: bold;
+        color: #ffffff;
         background-color: $light-color;
     }
 
     .cat {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
-        color: white;
+        color: $dark-color;
+        
         .item-count {
             padding-left: 5px;
         }
@@ -28,8 +30,8 @@ page-menu.ion-page {
     }
 
     .special-cat {
-        color: white;
-        font-size: 20px;
+        color: $dark-color;
+        font-size: 22px;
         font-weight: bold;
     }
 

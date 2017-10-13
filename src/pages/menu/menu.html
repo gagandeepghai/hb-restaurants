@@ -1,11 +1,11 @@
 <ion-header>
 </ion-header>
-<ion-content class="body-bg">
+<ion-content class="body-bg no-scroll">
   <ion-list inset class="menu" *ngIf="menuCategories">
     <ion-list-header class="menu-header">
       Menu
     </ion-list-header>
-    <ion-item *ngFor="let category of menuCategories" class="dark-bg cat" (click)="openMenu(category.name)">
+    <ion-item *ngFor="let category of menuCategories" class="card-bg cat" (click)="openMenu(category.name)">
       <ion-icon name="ios-grid-outline" style="padding-right: 3px;" item-left></ion-icon>
       <span>{{category.name}}<span class="item-count">({{category.count}})</span></span>
       <ion-icon name="ios-arrow-forward" class="right" item-right></ion-icon>
@@ -15,7 +15,7 @@
     <ion-list-header class="menu-header">
       More
     </ion-list-header>
-    <ion-item *ngFor="let category of specialCategories" class="dark-bg special-cat dark">
+    <ion-item *ngFor="let category of specialCategories" class="card-bg special-cat dark">
       <ion-icon name="ios-grid-outline" style="padding-right: 3px;" item-left></ion-icon>
       {{category}}
       <ion-icon name="ios-arrow-forward" class="right" item-right></ion-icon>
