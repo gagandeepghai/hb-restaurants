@@ -12,8 +12,9 @@ $font-path: "../assets/fonts";
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$light-color: #d0e6f2;
-$dark-color: #046a9e;
+$light-color: #1A8099;
+$dark-color: #0e5061;
+$body-color: #D4D3D1;//69655A;
 
 $munch-theme-color: $dark-color;
 $background-color: #b9c3c6;
@@ -39,7 +40,7 @@ $munch-larger-font-size: 1.8rem;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #2b849b,
+  primary:    $dark-color,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,

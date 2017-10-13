@@ -71,6 +71,10 @@ $fab-mini-size: 30px;
     text-align: right;
 }
 
+ion-icon {
+  padding: 3px;
+}
+
 body, input[text], button {
   color: #888;
 }
@@ -97,13 +101,17 @@ body, input[text], button {
 
 ion-header {
   height: 20px !important;
-  background-color: $dark-color;
+  background-color: $light-color;
 }
 
 ion-content{
   &[disable-scroll] {
     overflow-y: hidden;
   }
+}
+
+.list-ios[inset] {
+  margin: 8px;
 }
 
 .bottom-border {
@@ -158,4 +166,12 @@ ion-content{
 
 .dark-bg {
   background-color: $dark-color;
+}
+
+.body-bg {
+  background-color: $body-color;
+}
+
+.card-bg {
+  background-color: #ffffff;
 }

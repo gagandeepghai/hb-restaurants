@@ -1,0 +1,22 @@
+<ion-row class="heading">
+    <ion-col width-75 class="left">
+    {{item.name}}
+    </ion-col>
+    <ion-col width-25 class="right">
+    {{item.price | currency:'AUD': true}}
+    </ion-col>
+</ion-row>
+<ion-row class="description">
+    {{item.description}}
+</ion-row>
+<ion-row>
+    <ion-col>
+    <spice-level [level]='item.spicelevel'></spice-level>
+    </ion-col>
+        <ion-col class="right">
+            <ion-badge item-right>
+                <ion-icon style="color: #4286f4; font-size: 14px;" no-padding name="thumbs-up" item-left></ion-icon>
+                {{item.likes}}
+            </ion-badge>
+    </ion-col>
+</ion-row>

@@ -1,0 +1,28 @@
+<ion-header>
+</ion-header>
+<ion-content class="body-bg">
+  <ion-card>
+    <ion-row class="light-bg action-btns">
+      <ion-col (click)="dismiss({})" class="right" *ngIf="isLeftEnd() === true" width-10>
+        <ion-icon name="md-close"></ion-icon>
+      </ion-col>
+      <ion-col (click)="goPrev()" class="right" *ngIf="isLeftEnd() === false">
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </ion-col>
+      <ion-col width-80>
+        {{selected}}
+      </ion-col>
+      <ion-col (click)="dismiss({})" class="left" *ngIf="isRightEnd() === true" width-10 >
+        <ion-icon name="md-close"></ion-icon>
+      </ion-col>
+      <ion-col (click)="goNext()" class="left" *ngIf="isRightEnd() === false">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div *ngIf="menu.length > 0" >
+  <ion-card *ngFor="let item of menu" class="menu-card dark-bg"> 
+    <menu-item-card [item]='item'></menu-item-card>
+  </ion-card>
+  </div>
+</ion-content>

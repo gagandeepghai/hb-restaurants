@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { RestaurantDetail } from '../models/restaurant-detail';
-import { RestaurantMenu } from '../models/restaurant-menu'
+import { RestaurantCategory } from '../models/restaurant-categories';
+import { RestaurantMenuItem } from '../models/restaurant-menu-item';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,7 +10,8 @@ import 'rxjs/add/operator/toPromise';
 export class RestaurantService {
     private baseUrl = 'api/';
     private detailsResourceLocator = 'details/'
-    private menuResourceLocator = 'menus/'
+    private menuResourceLocator = 'menus/';
+    private menuCategoriesResourceLocator = "/categories"
     constructor(private http: Http) { }
 
     // getRestaurantDetails(id: number): Promise<RestaurantDetail> {
@@ -19,10 +21,24 @@ export class RestaurantService {
     //             .catch(this.handleError);
     // }
 
-    getMenu(id: number) : Promise<RestaurantMenu> {
-        return this.http.get(this.baseUrl + this.menuResourceLocator + 1)
+    getMenuCategories(id: number) : Promise<RestaurantCategory[]> {
+        return this.http.get(this.baseUrl +this.menuResourceLocator + id)
                 .toPromise()
-                .then(response => response.json().data as RestaurantMenu)
+                .then(response => response.json().data.categories as RestaurantCategory[])
+                .catch(this.handleError);
+    }
+
+    getSpecialMenuCategories(id: number) : Promise<String[]> {
+        return this.http.get(this.baseUrl +this.menuResourceLocator + id)
+                .toPromise()
+                .then(response => response.json().data.specialCategories as String[])
+                .catch(this.handleError);
+    }
+
+    getMenu(id: number, category: string) : Promise<RestaurantMenuItem[]> {
+        return this.http.get(this.baseUrl + this.menuResourceLocator + id)
+                .toPromise()
+                .then(response => response.json().data.items as RestaurantMenuItem[])
                 .catch(this.handleError);
     }
 
@@ -36,17 +52,4 @@ export class RestaurantService {
     private handleError(error: any): Promise<any> {
         return Promise.reject(error.message || error);
     }
-
-    // getReservationTimeSlots(name: String): Promise<String[]> {
-    //     let timeSlots: String[] = [];
-    //     let times = ["00", "20", "40"];
-    //     let hourNow: number = 9;
-    //     for (var i = hourNow + 1; i < 24; i++) {
-    //         for (var j = 0; j < times.length; j++) {
-    //             timeSlots.push(i + ":" + times[j]);
-    //         }
-    //     }
-
-    //     return Promise.resolve(timeSlots);
-    // }
 }

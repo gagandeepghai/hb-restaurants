@@ -1,0 +1,6 @@
+<span><small class="description">Spice Level:&nbsp;</small></span>
+<span *ngFor="let i of flags">
+    <span [ngSwitch]="i">
+        <span *ngSwitchCase="1"><ion-icon no-padding class="color-spice" name="ios-flame"></ion-icon></span>
+    </span>
+</span>

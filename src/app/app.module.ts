@@ -18,6 +18,12 @@ import { LocatePage } from '../pages/locate/locate';
 import { MenuPage } from '../pages/menu/menu';
 import { TabsPage } from '../pages/tabs/tabs';
 
+//modals
+import { MenuView } from '../modals/menu/menu-view';
+
+//Components
+import { SpiceLevel } from '../modals/menu/item-card/spice-level/spice-level';
+import { ItemCardComponent } from '../modals/menu/item-card/item-card';
 // import { ForgotPasswordPage} from '../pages/login/forgot/forgot';
 // import { RegisterPage} from '../pages/login/login';
 
@@ -42,7 +48,10 @@ import { TabsPage } from '../pages/tabs/tabs';
     LoginPage,
     UserHomePage,
     LocatePage,
-    MenuPage
+    MenuPage,
+    MenuView,
+    ItemCardComponent,
+    SpiceLevel
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,6 +61,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     LoginPage,
     UserHomePage,
     LocatePage,
+    MenuView,
     MenuPage
   ],
   providers: [UserService, RestaurantService,
