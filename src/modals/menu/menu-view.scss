@@ -7,6 +7,12 @@ menu-view.ion-page {
         color: white;
     }
 
+    .items-section {
+        ion-card {
+            border-left: 5px solid $light-color;
+        }
+    }
+
     .menu-card {
         padding: 3px;
 

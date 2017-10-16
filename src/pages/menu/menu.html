@@ -1,24 +1,43 @@
+
 <ion-header>
 </ion-header>
-<ion-content class="body-bg no-scroll">
-  <ion-list inset class="menu" *ngIf="menuCategories">
-    <ion-list-header class="menu-header">
-      Menu
-    </ion-list-header>
-    <ion-item *ngFor="let category of menuCategories" class="card-bg cat" (click)="openMenu(category.name)">
-      <ion-icon name="ios-grid-outline" style="padding-right: 3px;" item-left></ion-icon>
-      <span>{{category.name}}<span class="item-count">({{category.count}})</span></span>
-      <ion-icon name="ios-arrow-forward" class="right" item-right></ion-icon>
-    </ion-item>
-  </ion-list>
-  <ion-list inset class="sp-menu" *ngIf="specialCategories">
-    <ion-list-header class="menu-header">
-      More
-    </ion-list-header>
-    <ion-item *ngFor="let category of specialCategories" class="card-bg special-cat dark">
-      <ion-icon name="ios-grid-outline" style="padding-right: 3px;" item-left></ion-icon>
-      {{category}}
-      <ion-icon name="ios-arrow-forward" class="right" item-right></ion-icon>
-    </ion-item>
-  </ion-list>
+<ion-content class="body-bg">
+  <ion-card class="light-bg heading" *ngIf="menuCategories">
+      MENU
+  </ion-card>
+  <ion-card inset class="card-bg menu-cat-card" *ngFor="let category of menuCategories" (tap)="openMenu(category.name)">
+    <ion-row>
+      <ion-col width-20>
+        <ion-icon name="ios-barcode" style="padding-right: 3px; font-size: 3em;" item-left *ngIf="category.name != 'Drinks'"></ion-icon>
+        <ion-icon name="ios-beer" style="padding-right: 3px; font-size: 3em;" item-left *ngIf="category.name == 'Drinks'"></ion-icon>
+      </ion-col>
+      <ion-col width-70 class="left">
+        <ion-row class="cat">{{category.name}}</ion-row>
+        <ion-row class="description">{{category.desc}}</ion-row>
+        <div class="meta">
+          <span class="left items-summary">{{category.count}}&nbsp;Items</span>
+          <span class="right range">{{category.minPrice | currency:'AUD': true}}&nbsp;-&nbsp;{{category.maxPrice | currency:'AUD': true}}</span>
+        </div>
+      </ion-col>
+      <ion-col width-10><ion-icon name="ios-arrow-forward" style="padding-right: 5px; font-size: 3em;" item-right></ion-icon></ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="light-bg heading" *ngIf="specialCategories">
+      MORE
+  </ion-card>
+  <ion-card inset class="card-bg special-cat-card" *ngFor="let category of specialCategories" (tap)="openSpecialMenu(category)">
+    <ion-row>
+      <ion-col width-20>
+        <ion-icon name="ios-people" style="padding-right: 3px; font-size: 3em;" item-left *ngIf="category.name == 'Banquet'"></ion-icon>
+        <ion-icon name="ios-basket" style="padding-right: 3px; font-size: 3em;" item-left *ngIf="category.name == 'Take Away'"></ion-icon>
+        <ion-icon name="ios-happy" style="padding-right: 3px; font-size: 3em;" item-left *ngIf="category.name == 'Food Facts'"></ion-icon>
+      </ion-col>
+      <ion-col width-70 class="left">
+        <ion-row class="cat">{{category.name}}</ion-row>
+        <ion-row class="description">{{category.desc}}</ion-row>
+        <ion-row class="meta-sp">{{category.restriction}}</ion-row>
+      </ion-col>
+      <ion-col width-10><ion-icon name="ios-arrow-forward" style="padding-right: 3px; font-size: 3em;" class="left" item-right></ion-icon></ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

@@ -6,24 +6,55 @@ export class InMemoryDataService implements InMemoryDbService {
         id: 1,
         categories:[ {
           name: 'Appetizers', 
-          count: 8
+          count: 8,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Dish before main course meal.'
         }, {
           name: 'Main course', 
-          count: 15
+          count: 15,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Main meal dishes.'
         }, {
           name: 'Breads', 
-          count: 8
+          count: 8,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Tandoori flaky breads.'
         }, {
           name: 'Rice', 
-          count: 6
+          count: 6,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Exotic Rice dishes.'
         }, {
           name: 'Sides', 
-          count: 7
+          count: 7,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Side order or Side item.'
         }, {
           name: 'Drinks', 
-          count: 8
+          count: 8,
+          minPrice: 10,
+          maxPrice: 16,
+          desc: 'Alcohlic and non alcohlic drinks.'
         }],
-        specialCategories: ['Banquet', 'Takeout', 'Funfacts'],
+        specialCategories: [ 
+            {
+                name: 'Banquet',
+                desc: '3 course meal feast',
+                restriction: 'Minimum 3 people'
+            },{
+                name: 'Take Away',
+                desc: 'To go menu.',
+                restriction: 'Not valid for delivery'
+            },{
+                name: 'Food Facts',
+                desc: 'Interesting facts about our food.'
+            }
+        ],
         items: [{
                 id: 1,
                 name: "Chicken 65",

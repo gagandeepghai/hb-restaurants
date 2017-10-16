@@ -4,9 +4,34 @@ page-menu.ion-page {
         font-weight: bold;
     }
 
-    #desctext {
-        color: white;
+    .description {
+        color: $dark-color;
+        font-weight: bold;
+        font-size: 12px;
     }
+
+    .meta {
+        font-size: 10px;
+        font-weight: bold;
+        .items-summary {
+            text-align: left;
+            color: #00a085;
+        }
+        .range {
+            padding-left: 60px;
+            text-align: right;
+            color: #750b26;
+            font-style: italic;
+        }
+    }
+
+    .meta-sp {
+        font-size: 12px;
+        font-weight: bold;
+        color: #750b26;
+        font-style: italic;
+    }
+    
 
     .menu-header {
         font-size: 18px;
@@ -15,14 +40,24 @@ page-menu.ion-page {
         background-color: $light-color;
     }
 
+    .menu-cat-card {
+        border-left: 5px solid #00a085;
+    }
+
     .cat {
         font-size: 22px;
         font-weight: bold;
-        color: $dark-color;
-        
+        color: $light-color;
         .item-count {
             padding-left: 5px;
         }
+    }
+
+    .heading {
+        line-height: 30px;
+        text-align: center;
+        font-size: 18px;
+        color: white;
     }
 
     .list-header-ios {
@@ -35,9 +70,10 @@ page-menu.ion-page {
         font-weight: bold;
     }
 
-    .invalid {
-        border: 1px solid #ea6153;
+    .special-cat-card {
+        border-left: 5px solid #750b26;
     }
+
     .foot {
         position: absolute; bottom: 0px;
     }

@@ -3,6 +3,7 @@ import { LoadingController, AlertController, Loading, ModalController } from 'io
 import { RestaurantService } from '../../providers/restaurant-service';
 import { RestaurantMenu } from '../../models/restaurant-menu';
 import { RestaurantCategory } from '../../models/restaurant-categories';
+import { RestaurantSpecialCategory } from '../../models/restaurant-sp-cat';
 import { MenuView } from '../../modals/menu/menu-view'
 
 @Component({
@@ -13,7 +14,7 @@ import { MenuView } from '../../modals/menu/menu-view'
 export class MenuPage implements OnInit {
     restaurantId: number = 1;
     menuCategories: RestaurantCategory[];
-    specialCategories: String[];
+    specialCategories: RestaurantSpecialCategory[];
     constructor(private restaurantService: RestaurantService, 
         public alertCtrl: AlertController,
         protected modalCtrl: ModalController,
@@ -49,6 +50,10 @@ export class MenuPage implements OnInit {
         var categories = [];
         this.menuCategories.forEach(item => categories.push(item.name));
         return categories;
+    }
+
+    openSpecialMenu(category: RestaurantSpecialCategory) {
+
     }
 
     openMenu(selected: String) {

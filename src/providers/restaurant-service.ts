@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { RestaurantDetail } from '../models/restaurant-detail';
 import { RestaurantCategory } from '../models/restaurant-categories';
+import { RestaurantSpecialCategory } from '../models/restaurant-sp-cat';
 import { RestaurantMenuItem } from '../models/restaurant-menu-item';
 
 import 'rxjs/add/operator/toPromise';
@@ -28,10 +29,10 @@ export class RestaurantService {
                 .catch(this.handleError);
     }
 
-    getSpecialMenuCategories(id: number) : Promise<String[]> {
+    getSpecialMenuCategories(id: number) : Promise<RestaurantSpecialCategory[]> {
         return this.http.get(this.baseUrl +this.menuResourceLocator + id)
                 .toPromise()
-                .then(response => response.json().data.specialCategories as String[])
+                .then(response => response.json().data.specialCategories as RestaurantSpecialCategory[])
                 .catch(this.handleError);
     }
 
