@@ -1,33 +1,72 @@
 page-home.ion-page {
-    .title-text {
-        font-size: 18px;
-        line-height: 21px;
-        color: #116F76;
-        text-align: center;
-        font-weight: 300;
+    .home-bg {
+        background-color: #ffffff;
+    }
+    .brand {
+        padding-top: 0px;
+        color: #77bfd8;
+        font-size: 30px;
         font-weight: bold;
-    }
-
-    .header-text {
-        font-size: 15px;
-        line-height: 21px;
-        color: #FFFFFF;
         text-align: center;
-        font-weight: 300;
-        text-shadow: 0 1px 2px #000;
     }
 
-    .invalid {
-        border: 1px solid #ea6153;
+    .logo {
+        padding-top: 40px;
     }
-    .foot {
-        position: absolute; bottom: 0px;
+
+    .box-link {
+        min-width: 100%;
+        min-height:100px;
+    }
+
+    .border-blue {
+        border-left: 5px solid #4f9a94;
+        color: #4f9a94;
+        opacity: 20%;
+        // border-bottom: 5px solid #00a085;
+    }
+
+    .border-red {
+        border-left: 5px solid #ba6b6c;
+        color: #ba6b6c
+        // border-bottom: 5px solid #750b26;
+    }
+
+    .border-green {
+        border-left: 5px solid #5d99c6;
+        color: #5d99c6
+        // border-bottom: 5px solid #308236;
+    }
+
+    .border-purple {
+        border-left: 5px solid #836fa9;
+        color: #836fa9
+        // border-bottom: 5px solid #77108c;
+    }
+
+    .text-link {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .footer {
+        // padding-top: 100px;
+        position: fixed;
+bottom: 20px;
     }
 
     .item-complex .item-content, .item{
-        border-bottom:1px solid #369;
+        border-bottom:5px solid #369;
+    }
+
+    .icon {
+        text-align: center; 
+        padding-top: 3px; 
+        padding-bottom: 3px; 
+        font-size: 3em;
     }
 
     text-align: center;
-    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+    font-family: "proxima-nova","Helvetica Neue","HelveticaNeue",Helvetica,Arial,"Lucida Grande",sans-serif;;
 }

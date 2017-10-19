@@ -16,10 +16,12 @@ page-menu.ion-page {
         .items-summary {
             text-align: left;
             color: #00a085;
+            font-weight: bold;
         }
         .range {
-            padding-left: 60px;
+            padding-left: 85px;
             text-align: right;
+            font-weight: bold;
             color: #750b26;
             font-style: italic;
         }
@@ -34,6 +36,7 @@ page-menu.ion-page {
     
 
     .menu-header {
+        position: fixed;
         font-size: 18px;
         font-weight: bold;
         color: #ffffff;

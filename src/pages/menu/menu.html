@@ -1,10 +1,9 @@
-
 <ion-header>
 </ion-header>
 <ion-content class="body-bg">
-  <ion-card class="light-bg heading" *ngIf="menuCategories">
+  <!--<ion-card class="light-bg heading" *ngIf="specialCategories">
       MENU
-  </ion-card>
+  </ion-card>-->
   <ion-card inset class="card-bg menu-cat-card" *ngFor="let category of menuCategories" (tap)="openMenu(category.name)">
     <ion-row>
       <ion-col width-20>
@@ -21,9 +20,6 @@
       </ion-col>
       <ion-col width-10><ion-icon name="ios-arrow-forward" style="padding-right: 5px; font-size: 3em;" item-right></ion-icon></ion-col>
     </ion-row>
-  </ion-card>
-  <ion-card class="light-bg heading" *ngIf="specialCategories">
-      MORE
   </ion-card>
   <ion-card inset class="card-bg special-cat-card" *ngFor="let category of specialCategories" (tap)="openSpecialMenu(category)">
     <ion-row>

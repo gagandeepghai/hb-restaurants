@@ -1,5 +1,47 @@
 <ion-header>
 </ion-header>
-<ion-content class="no-scroll body-bg">
-  HOME
+<ion-content class="no-scroll dark-bg">
+  <div class="logo">
+    <img width="80" height="140" src="assets/logo/logo.png">
+  </div>
+  <div class="brand">Punjaab's</div>
+  
 </ion-content>
+<ion-footer style="padding-bottom: 5px;">
+    <ion-row no-padding no-margin>
+      <ion-col style="padding-left: 10px;" width-50 no-margin>
+        <ion-card no-margin class="box-link border-blue" (tap)="openHistory()">
+          <div>
+            <ion-icon name="bookmarks" class="icon" item-top></ion-icon>
+            <div class="text-link">History</div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col style="padding-right: 10px;" width-50 no-margin>
+        <ion-card no-margin no-margin class="box-link border-red" (tap)="openMenu()">
+          <div>
+            <ion-icon name="restaurant" class="icon" item-top></ion-icon>
+            <div class="text-link">Menu</div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding no-margin>
+      <ion-col style="padding-left: 10px;" width-50 no-margin>
+        <ion-card no-margin class="box-link border-purple" (tap)="openDetails()">
+          <div>
+            <ion-icon name="apps" class="icon" item-top></ion-icon>
+            <div class="text-link">Details</div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col style="padding-right: 10px;" width-50 no-margin>
+        <ion-card no-margin class="box-link border-green" (tap)="openAccount()">
+          <div>
+            <ion-icon name="person" class="icon" item-top></ion-icon>
+            <div class="text-link">Account</div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
