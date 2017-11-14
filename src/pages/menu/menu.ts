@@ -4,7 +4,11 @@ import { RestaurantService } from '../../providers/restaurant-service';
 import { RestaurantMenu } from '../../models/restaurant-menu';
 import { RestaurantCategory } from '../../models/restaurant-categories';
 import { RestaurantSpecialCategory } from '../../models/restaurant-sp-cat';
-import { MenuView } from '../../modals/menu/menu-view'
+import { MenuView } from '../../modals/menu/menu-view';
+import { MenuViewDrinks } from '../../modals/menu-drinks/menu-view-drinks';
+import { BanquetModal } from '../../modals/banquet/banquet';
+import { TAMenuModal } from '../../modals/takeaway/takeaway';
+import { FoodFactsModal } from '../../modals/facts/facts';
 
 @Component({
     selector: 'page-menu',
@@ -24,14 +28,16 @@ export class MenuPage implements OnInit {
 
     ngOnInit() {
         let loading: Loading = this.showLoading("Loading...");
-        this.restaurantService.
-            getMenuCategories(this.restaurantId)
+        
+        this.restaurantService.getMenuCategories(this.restaurantId)
             .then(cats => this.prepareMenucategories(cats, loading));
+        
         this.restaurantService.getSpecialMenuCategories(this.restaurantId)
         .then(specialCats => this.specialCategories = specialCats);
     }
 
     prepareMenucategories(menuCategories: RestaurantCategory[], loading: Loading ) {
+        console.log("CATS: " +JSON.stringify(menuCategories));
         this.menuCategories = menuCategories;
         loading.dismiss()
     }
@@ -53,7 +59,21 @@ export class MenuPage implements OnInit {
     }
 
     openSpecialMenu(category: RestaurantSpecialCategory) {
-
+        if(category.name === 'Drinks Menu') {
+            let showMenuModal = this.modalCtrl.create(MenuViewDrinks, {
+                id: this.restaurantId
+            });
+            showMenuModal.present();
+        } else if(category.name === 'Banquet') {
+            let showMenuModal = this.modalCtrl.create(BanquetModal);
+            showMenuModal.present();
+        } else if(category.name === 'Take Away') {
+            let showMenuModal = this.modalCtrl.create(TAMenuModal);
+            showMenuModal.present();
+        } else if(category.name === 'Food Facts') {
+            let showMenuModal = this.modalCtrl.create(FoodFactsModal);
+            showMenuModal.present();
+        }
     }
 
     openMenu(selected: String) {

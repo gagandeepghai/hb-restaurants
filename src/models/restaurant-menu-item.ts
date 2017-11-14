@@ -9,4 +9,5 @@ export class RestaurantMenuItem {
     likes: number;
     thumbsup: boolean = false;
     thumbsdown: boolean = false;
+    badges: String[];
 }

@@ -1,0 +1,7 @@
+<span *ngFor="let i of flags">
+    <span [ngSwitch]="i">
+        <span [ngClass]="{'color-blue': color==true}" *ngSwitchCase="1"><ion-icon name="ios-star"></ion-icon></span>
+        <span [ngClass]="{'color-blue': color==true}" *ngSwitchCase="0.5"><ion-icon name="ios-star-half-outline"></ion-icon></span>
+        <span [ngClass]="{'color-blue': color==true}" *ngSwitchDefault><ion-icon name="ios-star-outline"></ion-icon></span>
+    </span>
+</span>

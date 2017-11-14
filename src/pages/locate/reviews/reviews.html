@@ -1,0 +1,23 @@
+<div *ngIf="reviews.length > 0">
+   <div *ngFor="let review of reviews; let i = index" [ngClass]="{'review-item': i < (reviews.length - 1) }">
+      <ion-row>
+        <ion-col class="left" style="padding-top: 12px; font-weight: bold; padding-left: 12px;">{{review.user}}</ion-col>
+        <ion-col class="right">
+          <star-rating [rating]='review.stars'></star-rating>
+        </ion-col>
+      </ion-row>
+      <ion-row style="font-weight: bold; padding-left: 12px; padding-bottom: 12px; font-size: 10px;">
+        {{review.review}}
+      </ion-row>
+    </div>
+  <ion-row no-padding no-margin (tap)="read()">
+    <ion-col class="lean-padding" no-margin>
+      <button ion-button small block>MORE</button>
+    </ion-col>
+  </ion-row>
+</div>
+<div *ngIf="reviews.length <= 0">
+  <div class="warning-no-news">
+    No Reviews
+  </div>
+</div>

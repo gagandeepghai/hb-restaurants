@@ -2,68 +2,104 @@ page-home.ion-page {
     .home-bg {
         background-color: #ffffff;
     }
+
     .brand {
         padding-top: 0px;
-        color: #77bfd8;
-        font-size: 30px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
         font-weight: bold;
         text-align: center;
     }
 
+    .story-card {
+        border-left: 3px solid #494066;
+        color: #494066;
+        min-width: 100%;
+    }
+
     .logo {
-        padding-top: 40px;
+        padding-top: 10%;
     }
 
     .box-link {
         min-width: 100%;
-        min-height:100px;
     }
 
     .border-blue {
-        border-left: 5px solid #4f9a94;
-        color: #4f9a94;
+        border-left: 3px solid #870000;
+        color: #870000;
         opacity: 20%;
-        // border-bottom: 5px solid #00a085;
+        // border-bottom: 3px solid #00a085;
     }
 
     .border-red {
-        border-left: 5px solid #ba6b6c;
-        color: #ba6b6c
-        // border-bottom: 5px solid #750b26;
+        border-left: 3px solid #00695c;
+        color: #00695c
+        // border-bottom: 3px solid #750b26;
+    }
+
+    .foot {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+        padding-bottom: 5%;
+        opacity:0.65;
+    }
+
+    .punjaabs {
+        margin-left: 25%;
+        margin-right: 25%;
+        // padding-bottom: 20px;
+        max-width: 50%;
+        -webkit-filter: invert(80%);
     }
 
     .border-green {
-        border-left: 5px solid #5d99c6;
-        color: #5d99c6
-        // border-bottom: 5px solid #308236;
+        border-left: 3px solid #bf360c;
+        color: #bf360c
+        // border-bottom: 3px solid #308236;
     }
 
     .border-purple {
-        border-left: 5px solid #836fa9;
-        color: #836fa9
-        // border-bottom: 5px solid #77108c;
+        border-left: 3px solid #5397aa;
+        color: #5397aa
+        // border-bottom: 3px solid #77108c;
     }
 
     .text-link {
-        font-size: 20px;
+        font-size: 14px;
         font-weight: bold;
-        text-align: center;
     }
 
     .footer {
         // padding-top: 100px;
         position: fixed;
-bottom: 20px;
+        bottom: 20px;
     }
 
     .item-complex .item-content, .item{
-        border-bottom:5px solid #369;
+        border-bottom:3px solid #369;
+    }
+
+    .story-text {
+        font-size: 20px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        font-weight: bold;
+        vertical-align: auto;
+    }
+
+    .story-icon {
+        padding-right: 15px;
+        border-right: 1px solid #369;
     }
 
     .icon {
         text-align: center; 
-        padding-top: 3px; 
-        padding-bottom: 3px; 
+        padding-top: 1px; 
+        padding-bottom: 1px; 
         font-size: 3em;
     }
 

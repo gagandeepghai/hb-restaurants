@@ -1,5 +1,92 @@
 <ion-header>
 </ion-header>
-<ion-content class="no-scroll body-bg">
-  LOGIN
+<ion-content class="no-scroll dark-bg">
+  <div>
+  <div class="logo center">
+    <img src="assets/logo/Punjaabs.png">
+  </div> 
+  <ion-card>
+  <form no-margin no-padding class="form-content" [formGroup]="loginForm" novalidate>
+      <ion-list no-margin no-padding>
+        <ion-item *ngIf="flowName=='signup'">
+          <ion-input placeholder="Name" id="name" formControlName="name" required spellcheck="false" autocapitalize="on" type="text" [(ngModel)]="userContext.name"  [class.invalid]="(loginForm.controls.name.invalid || (passwordConfirm != userContext.password)) && submitAttempt">
+          </ion-input>
+          <ion-icon name="person" item-left class="color-blue border"></ion-icon>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input placeholder="Email Address" id="email" formControlName="email" required spellcheck="false" autocapitalize="off" [(ngModel)]="userContext.email" [class.invalid]="loginForm.controls.email.invalid && submitAttempt">
+          </ion-input>
+          <ion-icon name="mail" item-left class="color-blue border"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-input placeholder="Password" id="password" formControlName="password" required spellcheck="false" autocapitalize="off" [type]='passwordType' [(ngModel)]="userContext.password" [class.invalid]="loginForm.controls.password.invalid && submitAttempt">
+          </ion-input>
+          <ion-icon name="lock" item-left class="color-blue border"></ion-icon>
+          <ion-icon name="eye" item-right (tap)="togglePassword()" *ngIf='passwordType == "password"' class="color-blue"></ion-icon>
+          <ion-icon name="eye-off" item-right (tap)="togglePassword()" *ngIf='passwordType == "text"' class="color-blue"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-card>
+  <div class="login-action-btns">
+    <div class="center" *ngIf="flowName=='login'">
+        <button ion-button block solid icon-left class="action-btn" (tap)="login()">
+            <ion-icon name='log-in' class="icon" is-active="false"></ion-icon>
+                <span class="text">Sign In</span>
+            </button>
+      </div>
+      <div *ngIf="flowName=='login'">
+        <button ion-button block solid icon-left class="action-btn-e" (tap)="forgotPassword()">
+          <ion-icon name='help-circle-outline' class="icon" is-active="false"></ion-icon>
+            <span class="text">Forgot Password</span>
+        </button>
+      </div>
+      
+      <div class="center" *ngIf="flowName=='signup'">
+        <button ion-button block solid icon-left class="action-btn"  (tap)="createNewUser()">
+            <ion-icon name='arrow-dropright' is-active="false"></ion-icon>
+                <span class="text">Register</span>
+            </button>
+      </div>
+      <div *ngIf="flowName=='signup'">
+        <button ion-button block solid icon-left class="action-btn-g" (tap)="ngOnInit()">
+            <ion-icon name='arrow-dropleft' is-active="false"></ion-icon>
+                <span class="text">Have an account</span>
+            </button>
+      </div>
+  </div>
+  <!--<ion-slides pager class="slides">
+    <ion-slide *ngFor="let card of cards">
+      <div class="info">
+        <card-display class="card-in-slide" [card]='card'></card-display>
+      </div>
+    </ion-slide>
+  </ion-slides>-->
+  
+  </div>
 </ion-content>
+<ion-footer style="padding-bottom: 20px;" class="center">
+  <!--<div>
+    <ion-row>
+      <ion-col class="login-container" width-50 no-padding no-margin>
+        <button ion-button block class="action-btn">Login</button>
+      </ion-col>
+    </ion-row>
+    <div class="action-btn-container center">
+      <button ion-button block small class="action-btn">Register</button>
+    </div>
+    <div class="action-btn-container left" no-padding no-margin>
+        <button ion-button block class="action-btn"><ion-icon name="logo-facebook" class="fb" item-left></ion-icon>Connect with facebook</button>
+    </div>
+  </div>-->
+  <hr>
+  <div class="question" no-padding no-margin>
+    Don't have an account?
+  </div>
+  <div class="action-btn-container left" no-padding no-margin>
+    <button ion-button block class="action-btn" (tap)="register()" *ngIf="flowName=='login'"><ion-icon name="person" class="icon" item-left></ion-icon><span class="text">Register</span></button>
+    <button ion-button block class="action-btn" (tap)="loginWithFacebook()"><ion-icon name="logo-facebook" class="icon" item-left></ion-icon><span class="text">Connect with facebook</span></button>
+  </div>
+</ion-footer>

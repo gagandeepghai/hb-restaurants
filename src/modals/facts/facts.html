@@ -1,0 +1,21 @@
+<ion-header>
+</ion-header>
+<ion-content class="body-bg">
+ <div class="brand">Food Facts</div>
+ <div class="data">
+    <ion-row no-padding no-margin>
+        <ion-col class="lean-padding" no-margin>
+            <ion-card class="fact-card" no-margin>
+                <ion-list no-margin no-padding>
+                <ion-item text-wrap *ngFor="let fact of facts; let i = index;" [ngClass]='"clr-" +(i%3)'>
+                    <span class="text">{{fact}}</span>
+                </ion-item>
+            </ion-list>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+ </div>
+    <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

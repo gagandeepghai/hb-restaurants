@@ -1,33 +1,182 @@
 page-login.ion-page {
-    .title-text {
-        font-size: 18px;
-        line-height: 21px;
-        color: #116F76;
-        text-align: center;
-        font-weight: 300;
-        font-weight: bold;
-    }
-
-    .header-text {
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
         font-size: 15px;
-        line-height: 21px;
-        color: #FFFFFF;
+        font-weight: bold;
         text-align: center;
-        font-weight: 300;
-        text-shadow: 0 1px 2px #000;
     }
 
-    .invalid {
-        border: 1px solid #ea6153;
-    }
-    .foot {
-        position: absolute; bottom: 0px;
-    }
-
-    .item-complex .item-content, .item{
-        border-bottom:1px solid #369;
+    .cl-CONNECT {
+        background-color: #81d4fa;
+        min-width: 100%;
+        .what-col {
+            background-color: #81d4fa;
+            text-align: center;
+        }
     }
 
-    text-align: center;
-    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+    .cl-TELL {
+        background-color: #80cbc4;
+        min-width: 100%;
+        
+        .what-col {
+            background-color: #80cbc4;
+            text-align: center;
+        }
+    }
+    .cl-EARN {
+        // border-right: 3px solid #53a93f;
+        background-color: #ffab91;
+        min-width: 100%;
+        
+        .what-col {
+            background-color: #ffab91;
+            text-align: center;
+        }
+    }
+
+    .image {
+        max-width: 100%;
+    }
+
+    .button-inner{
+        justify-content:flex-start;
+    }
+
+    .question {
+        color: #cfd8dc;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .action-btn-container {
+        .icon {
+            width: 20%;
+            min-width: 20%;
+            max-width: 20%;
+            border-right: 2px solid #cfd8dc;
+            padding-right: 10px;
+        }
+
+        padding-top: 10px;
+        padding-left: 10%;
+        padding-right: 10%;
+        text-align: left;
+
+        .text {
+            padding-left: 10px;
+        }
+
+        .action-btn {
+            text-align: left;
+            background-color: $light-color;
+        }
+    }
+
+    .login-action-btns {
+        padding-left: 10%;
+        padding-right: 10%;
+        .icon {
+            width: 20%;
+            min-width: 20%;
+            max-width: 20%;
+            border-right: 2px solid #cfd8dc;
+            padding-right: 10px;
+        }
+        .text {
+            padding-left: 10px;
+        }
+        .action-btn {
+            background-color: $light-color;
+        }
+        
+        .action-btn-e {
+            background-color: #e53935;
+        }
+
+        .action-btn-g {
+            background-color: #66bb6a;
+        }
+    }
+
+    hr { 
+        width: 90%;
+        background-color: #cfd8dc; 
+        height: 0.7px; 
+        border: 0;
+        opacity: 50%; 
+    }
+
+    .logo {
+        padding-top: 25px;
+    }
+
+    .info {
+        padding-bottom: 20px;
+        // background-color: #cfd8dc
+    }
+
+    .story-icon {
+        font-size: 2em;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px $dark-color;
+    }
+
+    .what {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .slides {
+        padding: 5px;
+        padding-top: 30px;
+    }
+
+    img {
+        max-width: 50%;
+    }
+
+    .slide-zoom {
+        min-height: 160px;
+    }
+
+    ion-item {
+        height: 16px;
+        font-size: 18px;
+        border-bottom:1px solid $dark-color;
+    }
+
+    .form-content {
+        font-size: 12px;
+        .color-blue {
+            width: 15%;
+            min-width: 15%;
+            max-width: 15%;
+            padding-right: 10px;
+            font-size: 1.2em;
+            color: $dark-color;
+        }
+
+        .border {
+            border-right: 2px solid $light-color;
+        }
+    }
+
+    .description {
+        color: #ffffff;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px $dark-color;
+    }
+
+    .icon {
+        color: #ffffff;
+        font-size: 2em;
+    }
 }

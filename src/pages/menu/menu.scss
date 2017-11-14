@@ -5,7 +5,7 @@ page-menu.ion-page {
     }
 
     .description {
-        color: $dark-color;
+        color: $light-color;
         font-weight: bold;
         font-size: 12px;
     }
@@ -15,11 +15,11 @@ page-menu.ion-page {
         font-weight: bold;
         .items-summary {
             text-align: left;
-            color: #00a085;
+            color: #00796b;
             font-weight: bold;
         }
         .range {
-            padding-left: 85px;
+            padding-left: 60px;
             text-align: right;
             font-weight: bold;
             color: #750b26;
@@ -43,14 +43,29 @@ page-menu.ion-page {
         background-color: $light-color;
     }
 
+    .content {
+        padding-top: 30px;
+    }
+    
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        min-width: 100%;
+    }
     .menu-cat-card {
-        border-left: 5px solid #00a085;
+        min-width: 100%;
+        border-left: 3px solid #00796b;
     }
 
     .cat {
         font-size: 22px;
         font-weight: bold;
-        color: $light-color;
+        color: $dark-color;
         .item-count {
             padding-left: 5px;
         }
@@ -61,6 +76,13 @@ page-menu.ion-page {
         text-align: center;
         font-size: 18px;
         color: white;
+    }
+
+    hr { 
+        background-color: $light-color; 
+        height: 2px; 
+        width: 95%;
+        border: 0; 
     }
 
     .list-header-ios {
@@ -74,7 +96,8 @@ page-menu.ion-page {
     }
 
     .special-cat-card {
-        border-left: 5px solid #750b26;
+        min-width: 100%;
+        border-left: 3px solid #750b26;
     }
 
     .foot {

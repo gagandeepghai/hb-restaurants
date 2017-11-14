@@ -1,0 +1,24 @@
+<ion-row class="heading">
+    <ion-col width-75 class="left" style="font-weight: bold;">
+    {{item.name}}
+    </ion-col>
+    <ion-col width-25 class="right" style="font-weight: bold;">
+    {{item.price | currency:'AUD': true}}
+    </ion-col>
+</ion-row>
+<ion-row class="description opaque">
+    {{item.description}}
+</ion-row>
+<ion-row>
+    <ion-col width-80>
+        <span *ngFor="let badge of item.badges">
+            <ion-badge class="badge-i" >
+                {{badge}}
+            </ion-badge>
+        </span>
+    </ion-col>
+    <ion-col class="right description">
+        <ion-icon style="font-size: 14px; color: #b20e45;" no-padding name="heart" item-left></ion-icon>
+        {{item.likes}}
+    </ion-col>
+</ion-row>

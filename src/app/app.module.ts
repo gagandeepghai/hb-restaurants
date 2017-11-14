@@ -20,18 +20,33 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 //modals
 import { MenuView } from '../modals/menu/menu-view';
+import { PhotosSlideShow } from '../modals/gallery/gallery';
+import { HistoryModal } from '../modals/history/history';
+import { StoryModal } from '../modals/story/story';
+import { BanquetModal } from '../modals/banquet/banquet';
+import { TAMenuModal } from '../modals/takeaway/takeaway';
+import { FoodFactsModal } from '../modals/facts/facts';
+import { MenuViewDrinks } from '../modals/menu-drinks/menu-view-drinks';
+
+import { ForgotPasswordPage} from '../pages/login/forgot/forgot';
 
 //Components
 import { SpiceLevel } from '../modals/menu/item-card/spice-level/spice-level';
 import { ItemCardComponent } from '../modals/menu/item-card/item-card';
-// import { ForgotPasswordPage} from '../pages/login/forgot/forgot';
+import { ReviewsComponent  } from '../pages/locate/reviews/reviews';
+import { StarRatingComponent } from '../components/starratingcomponent';
+import { InfoCard } from '../pages/login/card-display/card-display';
+
 // import { RegisterPage} from '../pages/login/login';
+
+//PLUGINS
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
     FormsModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     IonicModule.forRoot(MyApp,{
       menuType: 'push',
       platforms: {
@@ -51,7 +66,18 @@ import { ItemCardComponent } from '../modals/menu/item-card/item-card';
     MenuPage,
     MenuView,
     ItemCardComponent,
-    SpiceLevel
+    SpiceLevel,
+    ReviewsComponent,
+    StarRatingComponent,
+    InfoCard,
+    PhotosSlideShow,
+    ForgotPasswordPage,
+    HistoryModal,
+    StoryModal,
+    BanquetModal,
+    TAMenuModal,
+    FoodFactsModal,
+    MenuViewDrinks
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,9 +88,17 @@ import { ItemCardComponent } from '../modals/menu/item-card/item-card';
     UserHomePage,
     LocatePage,
     MenuView,
-    MenuPage
+    MenuPage,
+    PhotosSlideShow,
+    ForgotPasswordPage,
+    HistoryModal,
+    StoryModal,
+    BanquetModal,
+    TAMenuModal,
+    FoodFactsModal,
+    MenuViewDrinks
   ],
-  providers: [UserService, RestaurantService,
+  providers: [UserService, RestaurantService, CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

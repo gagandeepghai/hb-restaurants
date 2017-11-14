@@ -1,0 +1,20 @@
+<ion-header>
+</ion-header>
+<ion-content class="body-bg">
+ <div class="brand">Our Story</div>
+    <div class="data">
+        <ion-row no-padding no-margin *ngFor="let snippet of snippets; let i = index;">
+            <ion-col class="lean-padding" no-margin>
+                <ion-card class="start-card" [ngClass]='"clr-"+i' no-margin>
+                    <img [src]="getImage(i)">
+                    <div class="desc">
+                        {{snippet}}
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

@@ -2,7 +2,8 @@ export class UserContext {
     password: String;
     username: String;
     email: String;
-    phoneNumber: number;
+    name: String;
+    photo: String;
+    isFacebook: boolean;
     cookie: {}; 
-    restaurantName: String;
 }

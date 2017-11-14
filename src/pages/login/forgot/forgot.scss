@@ -1,0 +1,59 @@
+forgot-login.ion-page {
+    .logo {
+        padding-top: 25px;
+    }
+
+    .forgot-card {
+        .heading {
+            color: $dark-color;
+            padding: 10px;
+            font-size: 16px;
+            text-shadow: 0px 0px 1px $light-color;
+        }
+
+        .color-blue {
+            width: 15%;
+            min-width: 15%;
+            max-width: 15%;
+            padding-right: 10px;
+            font-size: 1.2em;
+            color: $dark-color;
+        }
+
+        .action-btn-container {
+            padding-top: 20px;
+            padding-left: 10%;
+            padding-right: 10%;
+
+            .action-btn {
+                text-align: left;
+                background-color: #66bb6a;
+            }
+        }
+
+        .border {
+            border-right: 2px solid $light-color;
+        }
+    }
+
+    .fab-close {
+        background-color: #ffffff;
+        color: $dark-color;
+        
+        ion-icon {
+            font-size: 3em;
+            font-weight: bold;
+        }
+    }
+    ion-item{ 
+        height: 16px;
+        font-size: 18px;
+        border-bottom:1px solid $dark-color;
+    }
+    img {
+        max-width: 50%
+    }
+
+    text-align: center;
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}

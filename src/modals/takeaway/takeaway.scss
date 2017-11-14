@@ -1,0 +1,84 @@
+takeaway.ion-page {
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+    ion-card {
+        width: 100%;
+    }
+
+    .data {
+        padding-bottom: 35px;
+    }
+
+    .restiction {
+        padding-top: 10px;
+    }
+
+    .restiction-card {
+        border-left: 3px solid #750b26;
+        .icon {
+            font-size: 1.5em;
+        }
+
+        .text{ 
+            font-weight: bold;
+            font-style: italic;
+        }
+        .condition {
+            font-size: 14px;
+            font-weight: bold;
+            color: #750b26;
+            font-style: italic;
+        }
+
+        .info{
+            font-size: 14px;
+            font-weight: bold;
+            color: #00695c;
+            font-style: italic;
+        }
+    }
+
+    .heading {
+        border-bottom: 1px solid $dark-color;
+        color: $dark-color;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        text-shadow: 0px 0px 1px $light-color;
+    }
+
+    ion-item {
+        height: 12px;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .price {
+        padding: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #2e7d32;
+        font-style: italic;
+    }
+
+    .name {
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: $dark-color;
+        font-style: italic;
+    }
+
+    ion-card {
+        border-left: 3px solid #0277bd;
+    }
+
+    ion-icon {
+        font-size: 3em;
+    }
+}

@@ -1,0 +1,69 @@
+banquet.ion-page {
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .heading {
+        border-bottom: 1px solid $dark-color;
+        color: $dark-color;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        text-shadow: 0px 0px 1px $light-color;
+    }
+
+    .data {
+        padding-bottom: 30px;
+    }
+
+    ion-item {
+        height: 14px;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    ion-card {
+        width: 100%;
+    }
+
+    .one {
+         padding-top: 10px;
+    }
+
+    .restiction-card {
+        border-left: 3px solid #750b26;
+        .icon {
+            font-size: 1.5em;
+        }
+
+        .text{ 
+            font-weight: bold;
+            font-style: italic;
+        }
+        .condition {
+            font-size: 14px;
+            font-weight: bold;
+            color: #750b26;
+            font-style: italic;
+        }
+
+        .info{
+            font-size: 14px;
+            font-weight: bold;
+            color: #00695c;
+            font-style: italic;
+        }
+    }
+
+    .one-card {
+        border-left: 3px solid #00796b;
+    }
+   
+    ion-icon {
+        font-size: 3em;
+    }
+}

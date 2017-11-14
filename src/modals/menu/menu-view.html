@@ -1,28 +1,39 @@
 <ion-header>
 </ion-header>
 <ion-content class="body-bg">
-  <ion-card>
-    <ion-row class="light-bg action-btns">
-      <ion-col (click)="dismiss({})" class="right" *ngIf="isLeftEnd() === true" width-10>
-        <ion-icon name="md-close"></ion-icon>
-      </ion-col>
-      <ion-col (click)="goPrev()" class="right" *ngIf="isLeftEnd() === false">
-        <ion-icon name="ios-arrow-back"></ion-icon>
-      </ion-col>
-      <ion-col width-80>
-        {{selected}}
-      </ion-col>
-      <ion-col (click)="dismiss({})" class="left" *ngIf="isRightEnd() === true" width-10 >
-        <ion-icon name="md-close"></ion-icon>
-      </ion-col>
-      <ion-col (click)="goNext()" class="left" *ngIf="isRightEnd() === false">
-        <ion-icon name="ios-arrow-forward"></ion-icon>
+  <div class="content">
+    <ion-row no-padding no-margin>
+      <ion-col no-padding no-margin class="lean-padding">
+        <ion-card no-padding no-margin>
+          <ion-row class="light-bg action-btns">
+            <ion-col (tap)="dismiss({})" class="right" *ngIf="isLeftEnd() === true" width-10>
+              <ion-icon name="md-close"></ion-icon>
+            </ion-col>
+            <ion-col (tap)="goPrev()" class="right" *ngIf="isLeftEnd() === false">
+              <ion-icon name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col width-80>
+              {{selected}}
+            </ion-col>
+            <ion-col (tap)="dismiss({})" class="left" *ngIf="isRightEnd() === true" width-10 >
+              <ion-icon name="md-close"></ion-icon>
+            </ion-col>
+            <ion-col (tap)="goNext()" class="left" *ngIf="isRightEnd() === false">
+              <ion-icon name="ios-arrow-forward"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card>
       </ion-col>
     </ion-row>
-  </ion-card>
-  <div *ngIf="menu.length > 0" class="items-section">
-  <ion-card *ngFor="let item of menu" class="menu-card card-bg"> 
-    <menu-item-card [item]='item'></menu-item-card>
-  </ion-card>
+    <ion-row no-padding no-margin  *ngFor="let item of menu" >
+      <ion-col no-padding no-margin class="lean-padding">
+        <ion-card no-padding no-margin class="menu-card card-bg"> 
+          <menu-item-card [item]='item'></menu-item-card>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </div>
+  <ion-fab center bottom>
+    <button ion-fab mini outline (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+  </ion-fab>
 </ion-content>

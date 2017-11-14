@@ -1,0 +1,41 @@
+story.ion-page {
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+    ion-icon {
+        font-size: 3em;
+    }
+    ion-card {
+        width: 100%;
+    }
+
+    .data {
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+
+    .clr-0 {
+        border-left: 3px solid #2196f3;
+    }
+
+     .clr-1 {
+        border-left: 3px solid #b71c1c;
+    }
+
+     .clr-2 {
+        border-left: 3px solid #8bc34a;
+    }
+
+    .desc {
+        padding: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        color: $dark-color;
+        font-style: italic;
+    }
+}

@@ -7,8 +7,11 @@ import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from 'rxjs/Rx';
 import { OnboardValidationResponse } from '../models/onboard-response';
 import { OnboardContext } from '../models/onboard-context';
+import { Facebook, FacebookLoginResponse } from 'ionic-native';
 
 import 'rxjs/add/operator/toPromise';
+
+const FB_APP_ID: number = 1218138474966242;
 
 @Injectable()
 export class UserService {
@@ -26,9 +29,9 @@ export class UserService {
         return Promise.reject(error.message || error);
     }
 
-    createContext(context): Promise<void> {
+    createContext(context): Promise<Boolean> {
         this.context.next(context);
-        return Promise.resolve();
+        return Promise.resolve(true);
     }
 
     getUserContext(): Observable<UserContext> {
@@ -39,7 +42,6 @@ export class UserService {
         let context = new UserContext;
         context.username = "gagandeepghai";
         context.email = "gagdeep@gmail.com";
-        context.restaurantName = "Punj'aabs";
         return context;
     }
 
@@ -75,5 +77,34 @@ export class UserService {
             response.valid = false;
         }
         return Promise.resolve(response);
+    }
+
+    loginWithFacebook() : boolean{
+        let success: boolean = false;
+        Facebook.login(['public_profile', 'user_friends', 'email'])
+        .then((res: FacebookLoginResponse) =>
+            {
+                console.log('Logged into Facebook!', JSON.stringify(res));
+                Facebook.api('me?fields=first_name,last_name,email,picture,gender', null)
+                    .then(profileData => this.createUserContextFromFBContext(profileData))
+                    .then(() => this.events.publish('fb-login-success'))
+                    .catch(e => console.log('Error logging into Facebook', e));
+            }
+        )
+        .catch(e => console.log('Error logging into Facebook', e));
+
+        return success;
+    }
+
+    createUserContextFromFBContext(profileData) {
+        console.log(JSON.stringify(profileData));
+        let context = new UserContext;
+        context.name = profileData.first_name + profileData.last_name;
+        context.email = profileData.email;
+        context.photo = profileData.picture.data.url;
+        context.isFacebook = true;
+
+        this.context.next(context);
+        return Promise.resolve()
     }
 }

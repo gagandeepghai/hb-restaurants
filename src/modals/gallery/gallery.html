@@ -1,0 +1,16 @@
+<ion-header>
+</ion-header>
+<ion-content class="no-scroll slideshow">
+  <div class="cursor">
+    {{slideIndex}}&nbsp;/&nbsp;20
+  </div>
+  <ion-slides options="{pagination: false}" pager class="slides" #mySlider (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let image of images">
+        <img [src]='image'>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

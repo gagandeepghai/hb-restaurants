@@ -82,6 +82,12 @@ body, input[text], button {
     background-color: $dark-color;
 }
 
+.lean-padding {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+}
+
 /* . . . */
 /* everywhere else */
 * {
@@ -100,8 +106,8 @@ body, input[text], button {
 }
 
 ion-header {
-  height: 20px !important;
-  background-color: $light-color;
+    height: 20px !important;
+    background-color: $light-color;
 }
 
 ion-content{

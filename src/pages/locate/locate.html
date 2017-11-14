@@ -1,5 +1,90 @@
 <ion-header>
 </ion-header>
-<ion-content class="no-scroll body-bg">
-  LOCATE
+<ion-content class="body-bg">
+  <div class="brand">Details</div>
+  <div class="content">
+    <ion-row no-padding no-margin (tap)="map()">
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="address-card" no-margin>
+          <div class="section-heading">LOCATION</div>
+          <img src="assets/map.jpg">
+          <ion-fab mini right top style="padding-top: 30px;">
+            <button ion-fab>
+              <ion-icon name="pin"></ion-icon>
+            </button>
+          </ion-fab>
+          <ion-row>
+            <ion-col class="icon-i" width-20>
+              <ion-icon name="navigate"></ion-icon>
+            </ion-col>
+            <ion-col width-80 class="left-padding">
+              <a class="name">Punjaab's</a>
+              <br>
+              <a class="address">Shop 2, 300 Pacific Highway, <br>Crows Nest, Sydney AU</a>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding no-margin (tap)="call()">
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="phone-card" no-margin>
+           <ion-row>
+            <ion-col class="icon-i" width-20>
+              <ion-icon name="call"></ion-icon>
+            </ion-col>
+            <ion-col width-80 class="left-padding">
+              <a class="name">+61 2 8964 3389</a>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding no-margin (tap)="email()">
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="phone-card" no-margin>
+           <ion-row>
+            <ion-col class="icon-i" width-20>
+              <ion-icon name="mail"></ion-icon>
+            </ion-col>
+            <ion-col width-80 class="left-padding">
+              <a class="name">djdrer@gmail.com</a>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row class="action-btn">
+      <button ion-button block (tap)="photos()" >Open Gallery</button>
+    </ion-row>
+     <hr>
+    <ion-row no-padding no-margin (tap)="map()">
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="review-card" no-margin>
+          <div class="section-heading">REVIEWS</div>
+          <res-reviews></res-reviews>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding no-margin>
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="follow" no-margin>
+          <div class="section-heading">FIND US ON</div>
+           <ion-row>
+            <ion-col style ="text-align: center;" class="logos border" (tap)="open('fb')">
+              <ion-icon no-padding style="font-size: 3.6em;" name="logo-facebook"></ion-icon>
+              <div style="font-weight: bold;">facebook</div>
+            </ion-col>
+            <ion-col class="logos border" (tap)="open('ta')">
+              <img src="assets/logo/ta.png">
+            </ion-col>
+            <ion-col class="logos">
+              <img src="assets/logo/zo.png" (tap)="open('zo')">
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+</ion-header>
+<ion-content class="body-bg">
+ <div class="brand">Drinks</div>
+  <div class="content">
+    <ion-row no-padding no-margin *ngFor="let category of drinkCategories">
+      <ion-col class="lean-padding" no-margin>
+        <ion-card class="drinks-card" no-margin [ngClass]='getClass(category)'>
+          <div class="heading">
+              {{category}}
+          </div>
+          <div class="detail">
+              <ion-list no-margin no-padding>
+                  <ion-item *ngFor="let item of getItems(category)">
+                    <div no-padding no-margin>
+                      <ion-row no-padding no-margin class="main">
+                       <ion-col no-padding no-margin class="name">
+                         {{item.name}}
+                       </ion-col>
+                       <ion-col no-padding no-margin width-20  *ngIf="!item.origin"  class="m-price">
+                         {{item.glassPrice | currency:'AUD': true}}
+                      </ion-col>
+                      </ion-row>
+                      <ion-row no-padding no-margin class="from" *ngIf="item.origin">
+                       Origin - {{item.origin}}
+                      </ion-row>
+                      <ion-row no-padding no-margin class="description" *ngIf="item.description">
+                       <span>{{item.description}}</span>
+                      </ion-row>
+                      <ion-row no-padding no-margin width-20  *ngIf="item.origin">
+                        <ion-col no-padding no-margin width-33>
+                          <span *ngIf="item.glassPrice" class="price">Glass: {{item.glassPrice | currency:'AUD': true}}</span>
+                          <span *ngIf="!item.glassPrice" class="price-na">Glass: Not Available</span>
+                        </ion-col>
+                        <ion-col no-padding no-margin width-10></ion-col>
+                        <ion-col  no-padding no-margin width-33>
+                         <span *ngIf="item.bottlePrice" class="price">Bottle: {{item.bottlePrice | currency:'AUD': true}}</span>
+                         <span *ngIf="!item.bottlePrice" class="price-na">Bottle: Not Available</span>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-item>
+              </ion-list>
+          </div>
+      </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-fab center bottom>
+    <button ion-fab mini outline (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+  </ion-fab>
+</ion-content>

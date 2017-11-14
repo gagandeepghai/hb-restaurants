@@ -1,33 +1,98 @@
 page-locate.ion-page {
-    .title-text {
-        font-size: 18px;
-        line-height: 21px;
-        color: #116F76;
-        text-align: center;
-        font-weight: 300;
+
+    .section-heading {
+        background-color: #f5f5f5;
+        font-size: 12px;
         font-weight: bold;
-    }
-
-    .header-text {
-        font-size: 15px;
-        line-height: 21px;
-        color: #FFFFFF;
+        color: $dark-color;
         text-align: center;
-        font-weight: 300;
-        text-shadow: 0 1px 2px #000;
     }
 
-    .invalid {
-        border: 1px solid #ea6153;
-    }
-    .foot {
-        position: absolute; bottom: 0px;
-    }
-
-    .item-complex .item-content, .item{
-        border-bottom:1px solid #369;
+    .brand {
+        padding-top: 0px;
+        color: #ffffff;
+        background-color: $light-color;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
     }
 
-    text-align: center;
-    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+    ion-card {
+        border-left: 3px solid #00796b;
+    }
+
+    .review-card {
+        .review-item {
+            border-bottom: 1px solid #00796b;
+        }
+    }
+
+    .warning-no-news {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: red;
+        text-align: center;
+    }
+
+    .action-btn {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    hr { 
+        background-color: $dark-color; 
+        height: 0.7px; 
+        border: 0; 
+    }
+
+    ion-card {
+        min-width: 100%;
+    }
+    .address-card{
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .address {
+            font-size: 10px;
+            color: $dark-color;
+        }
+
+        .icon-i {
+            padding-top: 10px;
+            text-align: center;
+            font-size: 2em;
+            border-right: 1px solid #00796b;
+        }
+    }
+
+    .left-padding {
+        padding-left: 20px;
+    }
+
+    .follow {
+        .logos {
+            padding: 5px;
+        }
+        .border {
+            border-right: 1px solid #00796b;
+        }
+    }
+
+    .phone-card {
+        .name {
+            line-height: 34px;
+            font-size: 18px;
+            font-weight: bold;
+            color: $dark-color;
+        }
+        .icon-i {
+            text-align: center;
+            font-size: 1.6em;
+            border-right: 1px solid #00796b;
+        }
+    }
+    font-family: proxima-nova,'Helvetica Neue',HelveticaNeue,Helvetica,Arial,"Lucida Grande",sans-serif;
 }

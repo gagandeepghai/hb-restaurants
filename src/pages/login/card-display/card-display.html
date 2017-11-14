@@ -1,0 +1,23 @@
+  <!--<ion-col style="padding-left: 5px; padding-right: 5px;" no-margin>
+    <div no-margin [ngClass]='card.class'>
+      <ion-row>
+        <ion-col width-25 class="what-col">
+          <ion-icon [name]='card.icon' class="icon right story-icon" item-top></ion-icon>
+          <br>
+          <span class="what">{{card.what}}</span>
+        </ion-col>
+        <ion-col width-75>
+          <span class="description">{{card.description}}</span>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-col>-->
+
+  <ion-card no-margin [ngClass]='card.class'>
+    <div class="story-icon">
+      <ion-icon [name]='card.icon' class="icon right" item-top></ion-icon>
+    </div>
+    <div class="center description">
+      {{card.description}}
+    </div>
+  </ion-card>
