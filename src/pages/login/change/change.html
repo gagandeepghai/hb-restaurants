@@ -1,0 +1,27 @@
+<ion-header>
+</ion-header>
+<ion-content class="dark-bg no-scroll">
+    <div class="logo center">
+        <img src="assets/logo/Punjaabs.png">
+    </div> 
+    <ion-card class="forgot-card">
+        <div class="heading">
+            Create Password
+        </div>
+        <ion-card-content>
+            <ion-item>
+                <ion-icon name="lock" item-left class="color-blue border"></ion-icon>
+                <ion-input type="password" placeholder="New password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <div class="action-btn-container">
+                <button ion-button block solid icon-left class="action-btn" (tap)="create()">
+                    <ion-icon name='create' class="icon" is-active="false"></ion-icon>
+                        <span class="text">Create</span>
+                    </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+     <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="cancel()"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

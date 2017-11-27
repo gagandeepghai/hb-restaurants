@@ -1,20 +1,21 @@
-import { ViewController, LoadingController, ToastController, AlertController, Loading } from 'ionic-angular';
+import { ViewController, LoadingController, ToastController, AlertController, Loading, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { UserService } from '../../../providers/user-service';
 
 @Component ({
-    selector: 'forgot-login',
-    templateUrl: 'forgot.html'
+    selector: 'change-password',
+    templateUrl: 'change.html'
 })
 
-export class ForgotPasswordPage {
-    resetEmail: string;
+export class ChangePasswordPage {
+    email: String;
+    password: string;
     constructor(public viewCtrl: ViewController, 
+        private navParams: NavParams,
         public alertCtrl: AlertController, 
         private userService: UserService,
-        public toastCtrl: ToastController,
-        private loadingCtrl: LoadingController,) {
-
+        private loadingCtrl: LoadingController) {
+            this.email = this.navParams.get('email');
     }
 
     cancel() {
@@ -31,18 +32,18 @@ export class ForgotPasswordPage {
         }
     }
 
-    send() {
-        if(this.resetEmail) {
+    create() {
+        if(this.password) {
             let loading: Loading = this.showLoading("Please wait...");
-            this.userService.resetPassword(this.resetEmail)
+            this.userService.changePassword(this.email, this.password)
                 .then(() =>  {
                     loading.dismiss();
                     this.viewCtrl.dismiss({done: true});
                 });
         } else {
             let alert = this.alertCtrl.create({
-                title: 'Reset Password',
-                subTitle: 'Please enter email to reset.',
+                title: 'Create Password',
+                subTitle: 'Please enter password to reset.',
                 buttons: ['OK']
             });
             alert.present();

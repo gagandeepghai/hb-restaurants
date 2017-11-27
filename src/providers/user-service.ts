@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { UserContext } from '../models/user-context';
 import { Events } from 'ionic-angular';
 import { Subject } from "rxjs/subject";
@@ -8,6 +8,9 @@ import { BehaviorSubject } from 'rxjs/Rx';
 import { OnboardValidationResponse } from '../models/onboard-response';
 import { OnboardContext } from '../models/onboard-context';
 import { Facebook, FacebookLoginResponse } from 'ionic-native';
+import { AuthResponse } from '../models/auth-response';
+import { CreateUserResponse } from '../models/create-user-response';
+import { Device } from '@ionic-native/device';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -15,12 +18,18 @@ const FB_APP_ID: number = 1218138474966242;
 
 @Injectable()
 export class UserService {
-    private searchUrl = 'api/users/1';
+    private actualBaseUrl = "http://localhost:8080/v1/user/";
+    private createPath = "create";
+    private authPath = "auth";
+    private authChangePath = "auth/change";
+    private generateAuthPath = "auth/generate?email=";
     private context = new BehaviorSubject<UserContext>(null);
-    // private context = new BehaviorSubject<UserContext>(this.createDummyContext());
     private _context = this.context.asObservable();
 
-    constructor(private http: Http, public events: Events) { 
+    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private options = new RequestOptions({ headers: this.headers });
+
+    constructor(private http: Http, public events: Events, private device: Device) { 
         
     }
 
@@ -29,9 +38,8 @@ export class UserService {
         return Promise.reject(error.message || error);
     }
 
-    createContext(context): Promise<Boolean> {
+    setUserContext(context) {
         this.context.next(context);
-        return Promise.resolve(true);
     }
 
     getUserContext(): Observable<UserContext> {
@@ -45,11 +53,6 @@ export class UserService {
         return context;
     }
 
-    createUser(userContext: UserContext): Promise<void> {
-        this.createContext(userContext);
-        return Promise.resolve();
-    }
-
    getContextObject(): UserContext {
         return this.context.getValue();
     }
@@ -59,12 +62,73 @@ export class UserService {
         return Promise.resolve();
     }
 
-    validate(userContext: UserContext): Promise<boolean> {
-        if(userContext.username =="gagandeep" && userContext.password=="password") {
-            this.createContext(this.createDummyContext());
-            return Promise.resolve(true);
+    changePassword(email: String, password: String): Promise<AuthResponse> {
+        let url: string = this.actualBaseUrl + this.authChangePath;
+
+        let data = {
+            email: email,
+            password: password,
+            device: this.getDeviceInfo(),
+        };       
+
+        return this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => response.json() as AuthResponse)
+            .catch(response => response.json() as AuthResponse);
+    }
+
+    resetPassword (email: string): Promise<void> {
+        let url: string = this.actualBaseUrl + this.generateAuthPath;      
+
+        return this.http.post(url + email, this.options)
+            .toPromise()
+            .then(() => Promise.resolve());
+    }
+
+    validate(context: UserContext): Promise<AuthResponse> {
+        let url: string = this.actualBaseUrl + this.authPath;
+
+        let data = {
+            email: context.email,
+            password: context.password,
+            device: this.getDeviceInfo(),
+        };       
+
+        return this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => response.json() as AuthResponse)
+            .catch(response => response.json() as AuthResponse);
+    }
+
+    createNewAccount(context): Promise<CreateUserResponse> {
+        let url: string = this.actualBaseUrl + this.createPath;
+
+        let data = {
+            email: context.email,
+            name: context.name,
+            password: context.password,
+            device: this.getDeviceInfo(),
+        };       
+
+        return this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => response.json() as CreateUserResponse)
+            .catch(response => response.json() as CreateUserResponse);
+    }
+
+    getDeviceInfo() {
+        if(this.device) {
+            return {
+                uuid: this.device.uuid,
+                manufacturer: this.device.manufacturer,
+                serial: this.device.serial
+            }
         } else {
-            return Promise.resolve(false);
+            return {
+                uuid: "1234567890",
+                manufacturer: "APPLE",
+                serial: "0987654321"
+            }
         }
     }
 

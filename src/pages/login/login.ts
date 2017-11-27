@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { LoginInfoCard } from '../../models/login-info';
 import { UserContext } from '../../models/user-context';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NavController, LoadingController, ToastController, NavParams, ModalController, Events, AlertController, Platform } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, NavParams, ModalController, Events, AlertController, Platform, Loading } from 'ionic-angular';
 import { UserService } from '../../providers/user-service';
 import { ForgotPasswordPage} from './forgot/forgot';
+import { ChangePasswordPage} from './change/change';
+import { CreateUserResponse } from '../../models/create-user-response';
+import { AuthResponse } from '../../models/auth-response';
+import { UserHomePage } from '../user-home/user-home';
 
 @Component ({
     selector: 'page-login',
@@ -13,7 +17,6 @@ import { ForgotPasswordPage} from './forgot/forgot';
 
 export class LoginPage implements OnInit {
     userContext: UserContext;
-    cards: LoginInfoCard[] = [];
     flows = {"login": "login", "signup": "signup", "forgot": "forgot", "facebook": "facebook"}
     flowName: String;
     
@@ -27,6 +30,7 @@ export class LoginPage implements OnInit {
                 private platform: Platform,
                 private modalCtrl: ModalController,
                 public events: Events,
+                public navCtrl: NavController,
                 private loadingCtrl: LoadingController,
                 protected toastCtrl?: ToastController) {
 
@@ -45,34 +49,76 @@ export class LoginPage implements OnInit {
         if(this.loginForm.invalid) {
             this.showToast("Email and password are required fields.");
         } else {
+            let loading: Loading = this.showLoading("Please wait...");
             this.userService.validate(this.userContext)
-                .then((data) => this.moveToUserHome(data))
+                .then((data) => this.consumeLoginResponse(data, loading))
         }
+    }
+
+    consumeLoginResponse(data: AuthResponse, loading: Loading) {
+        loading.dismiss();
+        if(data.valid === true) {
+            if(data.isTemporary === true) {
+                this.changePassword();
+            } else {
+                this.moveToUserHome();
+            }
+        } else {
+            this.showAlert('Login Failed', 'Invalid credentials. Please try again.');
+        }
+    }
+
+    consumeUserCreateResponse(data: CreateUserResponse, loading: Loading) {
+        console.log("Create Response: " +JSON.stringify(data));
+        loading.dismiss();
+        if(data && data.valid === true) {
+            this.moveToUserHome();
+        } else {
+            this.showAlert('Create Account', data.message);
+        }
+    }
+
+    showAlert(title: string, message: string) {
+        let alert = this.alertCtrl.create({
+            title: title,
+            subTitle: message,
+            buttons: ['OK']
+        });
+        alert.present();
     }
 
     createNewUser() {
         this.submitAttempt = true;
-        if(this.loginForm.invalid) {
-            this.showToast("Email and password are required fields.");
+        if(!this.userContext.name || this.loginForm.invalid) {
+            this.showToast("Name, Email and password are a required fields");
         } else {
-            this.userService.createContext(this.userContext)
-                .then((data) => this.moveToUserHome(data));
+            let loading: Loading = this.showLoading("Please wait...");
+            this.userService.createNewAccount(this.userContext)
+                .then((data) => this.consumeUserCreateResponse(data, loading));
         }
     }
 
-    moveToUserHome(data: Boolean) { 
+    moveToUserHome() { 
+        this.userService.setUserContext(this.userContext);
+        this.navCtrl.setRoot(UserHomePage)
+    }
 
+    public showLoading(content: string): Loading {
+        if (this.loadingCtrl) {
+            let loading = this.loadingCtrl.create({
+                content: content
+            });
+            loading.present();
+            return loading;
+        }
     }
 
     register() {
         this.submitAttempt = false;
         this.flowName = this.flows.signup;
     }
-    ngOnInit() {
-        this.cards.push(this.getCard('CONNECT', 'Get latest and exclusive offers.', 'notifications'));
-        this.cards.push(this.getCard('TELL', 'Contact with feedback and reviews.', 'chatbubbles'));
-        this.cards.push(this.getCard('EARN', 'Earn rewards on every order.', 'card'));
 
+    ngOnInit() {
         this.submitAttempt = false;
         this.userContext = new UserContext();
         this.flowName = this.flows.login;
@@ -80,18 +126,9 @@ export class LoginPage implements OnInit {
         let newFormGroup: FormGroup = new FormGroup({
             email: new FormControl(this.userContext.email, Validators.compose([Validators.maxLength(30), Validators.required])),
             password: new FormControl(this.userContext.password, Validators.compose([Validators.maxLength(30), Validators.required])),
-            name: new FormControl(this.userContext.name, Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required]))
+            name: new FormControl(this.userContext.name, Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]))
         });
         this.loginForm = newFormGroup;
-    }
-
-    getCard(what: String, description: String, icon: String): LoginInfoCard {
-        let card = new LoginInfoCard();
-        card.what = what;
-        card.description = description;
-        card.class = 'cl-' + what;
-        card.icon = icon;
-        return card;
     }
 
     showToast(text) {
@@ -112,17 +149,25 @@ export class LoginPage implements OnInit {
             this.userService.loginWithFacebook();
             this.events.subscribe('fb-login-success', () => this.handleFacebookLoginSuccess());
         } else {
-            let alert = this.alertCtrl.create({
-                title: 'Facebook Login',
-                subTitle: 'Please run on device for native operations.',
-                buttons: ['OK']
-            });
-            alert.present();
+            this.showAlert('Facebook Login', 'Please run on device for native operations.');
         }
     }
 
     handleFacebookLoginSuccess() {
-        this.moveToUserHome(true);
+        this.moveToUserHome();
+    }
+
+    changePassword() {
+        let modal = this.modalCtrl.create(ChangePasswordPage, {email: this.userContext.email});
+
+        modal.onDidDismiss(data => {
+        if(data && data.done == true) {
+                this.showToast("Password Changed Successfully.");
+                this.moveToUserHome();
+            }
+        });
+        
+        modal.present();
     }
 
     forgotPassword() {

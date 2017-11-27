@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 import { UserHomePage } from '../user-home/user-home';
+import { NavController, ModalController } from 'ionic-angular';
 import { LocatePage } from '../locate/locate';
 import { MenuPage } from '../menu/menu';
 import { UserService } from '../../providers/user-service';
@@ -21,20 +21,22 @@ export class TabsPage implements OnInit {
 
   activeEventCount: number;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, public navCtrl: NavController) {
   }
 
   inferUserContext(context) {
+    console.log("subscribe context: " +JSON.stringify(context));
    if(!context) {
       this.userContextTitle = "Login";
       this.tabForUserContext = LoginPage;
     } else {
       this.userContextTitle = "Profile";  
-      this.tabForUserContext = UserHomePage;  
+      this.tabForUserContext = UserHomePage;
     }
   }
 
   ngOnInit(){
+    console.log("subscribe");
     this.userService.getUserContext().subscribe(userContext => this.inferUserContext(userContext));
   }
 }

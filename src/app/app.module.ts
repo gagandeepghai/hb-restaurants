@@ -29,6 +29,7 @@ import { FoodFactsModal } from '../modals/facts/facts';
 import { MenuViewDrinks } from '../modals/menu-drinks/menu-view-drinks';
 
 import { ForgotPasswordPage} from '../pages/login/forgot/forgot';
+import { ChangePasswordPage} from '../pages/login/change/change';
 
 //Components
 import { SpiceLevel } from '../modals/menu/item-card/spice-level/spice-level';
@@ -36,6 +37,7 @@ import { ItemCardComponent } from '../modals/menu/item-card/item-card';
 import { ReviewsComponent  } from '../pages/locate/reviews/reviews';
 import { StarRatingComponent } from '../components/starratingcomponent';
 import { InfoCard } from '../pages/login/card-display/card-display';
+import { Device } from '@ionic-native/device';
 
 // import { RegisterPage} from '../pages/login/login';
 
@@ -72,6 +74,7 @@ import { CallNumber } from '@ionic-native/call-number';
     InfoCard,
     PhotosSlideShow,
     ForgotPasswordPage,
+    ChangePasswordPage,
     HistoryModal,
     StoryModal,
     BanquetModal,
@@ -91,6 +94,7 @@ import { CallNumber } from '@ionic-native/call-number';
     MenuPage,
     PhotosSlideShow,
     ForgotPasswordPage,
+    ChangePasswordPage,
     HistoryModal,
     StoryModal,
     BanquetModal,
@@ -98,7 +102,7 @@ import { CallNumber } from '@ionic-native/call-number';
     FoodFactsModal,
     MenuViewDrinks
   ],
-  providers: [UserService, RestaurantService, CallNumber,
+  providers: [UserService, RestaurantService, CallNumber, Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
