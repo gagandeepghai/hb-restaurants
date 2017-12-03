@@ -11,6 +11,9 @@ import { Facebook, FacebookLoginResponse } from 'ionic-native';
 import { AuthResponse } from '../models/auth-response';
 import { CreateUserResponse } from '../models/create-user-response';
 import { Device } from '@ionic-native/device';
+import { UserReward } from '../models/user-reward';
+import { UserPromotions } from '../models/user-promo';
+import { Profile } from '../models/profile';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -19,10 +22,16 @@ const FB_APP_ID: number = 1218138474966242;
 @Injectable()
 export class UserService {
     private actualBaseUrl = "http://localhost:8080/v1/user/";
+    private actualProfileUrl = "http://localhost:8080/v1/profile";
     private createPath = "create";
     private authPath = "auth";
     private authChangePath = "auth/change";
     private generateAuthPath = "auth/generate?email=";
+    private logoutPath = "auth/destroy?email=";
+    private sessionPath = "session";
+    private rewardsPath = "/promos?session=";
+    private profilePath = "?session=";
+    private profileSave = "/save?session=";
     private context = new BehaviorSubject<UserContext>(null);
     private _context = this.context.asObservable();
 
@@ -38,6 +47,41 @@ export class UserService {
         return Promise.reject(error.message || error);
     }
 
+    saveProfile(profile: Profile): Promise<void> {
+        let url = this.actualProfileUrl + this.profileSave + this.context.getValue().session;
+        return this.http.post(url, profile, this.options)
+            .toPromise()
+            .then(Promise.resolve);
+    }
+
+    getUserProfile(): Promise<Profile> {
+        let url = this.actualProfileUrl + this.profilePath + this.context.getValue().session;
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json() as Profile)
+            .catch(response => response.json() as Profile);
+    }
+
+    getRewards(): Promise<UserReward[]> {
+        let url = this.actualProfileUrl + this.rewardsPath + this.context.getValue().session;
+        let data = this.getDeviceInfo();
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json() as UserReward[])
+            .catch(() => []);
+    }
+
+    init() {
+        let url = this.actualBaseUrl + this.sessionPath;
+        let data = this.getDeviceInfo();
+        this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => {
+                this.setUserContext(response.json() as UserContext)
+            })
+            .catch(() => console.log("error"));
+    }
+
     setUserContext(context) {
         this.context.next(context);
     }
@@ -48,7 +92,7 @@ export class UserService {
 
     createDummyContext() : UserContext {
         let context = new UserContext;
-        context.username = "gagandeepghai";
+        context.name = "gagandeepghai";
         context.email = "gagdeep@gmail.com";
         return context;
     }
@@ -85,6 +129,17 @@ export class UserService {
             .then(() => Promise.resolve());
     }
 
+    killSession(): Promise<void> {
+        let url: string = this.actualBaseUrl + this.logoutPath;      
+
+        return this.http.post(url + this.context.getValue().email, this.options)
+            .toPromise()
+            .then(() => {
+                this.setUserContext(null);
+                Promise.resolve()
+            });
+    }
+
     validate(context: UserContext): Promise<AuthResponse> {
         let url: string = this.actualBaseUrl + this.authPath;
 
@@ -117,7 +172,7 @@ export class UserService {
     }
 
     getDeviceInfo() {
-        if(this.device) {
+        if(this.device.uuid) {
             return {
                 uuid: this.device.uuid,
                 manufacturer: this.device.manufacturer,

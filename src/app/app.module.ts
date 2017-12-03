@@ -27,6 +27,9 @@ import { BanquetModal } from '../modals/banquet/banquet';
 import { TAMenuModal } from '../modals/takeaway/takeaway';
 import { FoodFactsModal } from '../modals/facts/facts';
 import { MenuViewDrinks } from '../modals/menu-drinks/menu-view-drinks';
+import { UserRewardsModal } from '../pages/user-home/rewards/rewards';
+import { UserProfile } from '../pages/user-home/profile/profile';
+import { UserReservation } from '../pages/user-home/reserve/reserve';
 
 import { ForgotPasswordPage} from '../pages/login/forgot/forgot';
 import { ChangePasswordPage} from '../pages/login/change/change';
@@ -80,7 +83,10 @@ import { CallNumber } from '@ionic-native/call-number';
     BanquetModal,
     TAMenuModal,
     FoodFactsModal,
-    MenuViewDrinks
+    MenuViewDrinks,
+    UserRewardsModal,
+    UserProfile,
+    UserReservation
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -100,7 +106,10 @@ import { CallNumber } from '@ionic-native/call-number';
     BanquetModal,
     TAMenuModal,
     FoodFactsModal,
-    MenuViewDrinks
+    MenuViewDrinks,
+    UserRewardsModal,
+    UserProfile,
+    UserReservation
   ],
   providers: [UserService, RestaurantService, CallNumber, Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

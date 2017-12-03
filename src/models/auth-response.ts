@@ -1,5 +1,7 @@
+import { UserContext } from './user-context';
+
 export class AuthResponse {
     valid: Boolean;
     isTemporary: Boolean;
-    session: String;
+    context: UserContext;
 }

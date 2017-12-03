@@ -1,33 +1,93 @@
 user-home.ion-page {
-    .title-text {
-        font-size: 18px;
-        line-height: 21px;
-        color: #116F76;
+    .content {
+        .punjaabs {
+            margin-left: 25%;
+            margin-right: 25%;
+            padding-top: 20px;
+            max-width: 50%;
+            -webkit-filter: invert(80%);
+        }
+
         text-align: center;
-        font-weight: 300;
-        font-weight: bold;
+        padding-bottom: 45px;
+        .profile-icon {
+            font-size: 8em;
+        }
     }
 
-    .header-text {
-        font-size: 15px;
-        line-height: 21px;
-        color: #FFFFFF;
-        text-align: center;
-        font-weight: 300;
-        text-shadow: 0 1px 2px #000;
+    .action-btn {
+        padding-top: 10px;
+        padding-left: 30%;
+        padding-right: 30%;
+        text-align: left;
+
+        .text {
+            padding-left: 10px;
+        }
+
+        .icon {
+            border-right: 2px solid #cfd8dc;
+            padding-right: 10px;
+        }
+
+        .lo {
+            text-align: left;
+            background-color: #e53935;
+        }
     }
 
-    .invalid {
-        border: 1px solid #ea6153;
-    }
-    .foot {
-        position: absolute; bottom: 0px;
+    ion-card {
+        min-width: 100%;
     }
 
-    .item-complex .item-content, .item{
-        border-bottom:1px solid #369;
+    .lean-padding {
+        padding: 5px;
     }
 
-    text-align: center;
-    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+    .cards {
+        .icon-col {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .text {
+            font-size: 20px;
+            height: 50px;
+            line-height: 50px;
+            text-align: left;
+            padding-left: 30px;
+            font-weight: bold;
+            vertical-align: auto;
+        }
+    }
+
+    .edit-ic {
+        border-right: 2px solid #ffccbc;
+    }
+    .reward-ic {
+        border-right: 2px solid #b2dfdb;
+    }
+    .promo-ic {
+        border-right: 2px solid #f8bbd0;
+    }
+    .message-ic {
+        border-right: 2px solid #b2ebf2;
+    }
+
+    .edit-card {
+        border-left: 3px solid #bf360c;
+        color: #bf360c
+    }
+    .reward-card {
+        border-left: 3px solid #00796b;
+        color: #00796b
+    }
+    .promo-card {
+        border-left: 3px solid #ad1457;
+        color: #ad1457
+    }
+    .message-card {
+        border-left: 3px solid #00838f;
+        color: #00838f
+    }
 }

@@ -1,0 +1,79 @@
+profile.ion-page {
+    .data {
+        padding-top: 50px;
+    }
+    .reward-card {
+        border-left: 3px solid #750b26;
+        .head {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 20px;
+            .curr{
+                padding-right: 10px;
+                text-align: right;
+                font-style: italic;
+            }
+        }
+
+        .warning {
+            color: #750b26;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 10px;
+        }
+    }
+
+    .lean-padding{
+        padding: 5px;
+    }
+
+    .action-btn-container {
+        padding-top: 20px;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 5%;
+
+        .action-btn {
+            text-align: left;
+            background-color: #00796b;
+        }
+    }
+
+    .form-content {
+        padding-top: 5%;
+        .form-card {
+
+            .heading {
+                text-align: center;
+                color: $dark-color;
+                padding: 10px;
+                font-size: 16px;
+                text-shadow: 0px 0px 0.7px $light-color;
+            }
+
+            border-left: 3px solid #00796b;
+            .color-blue {
+                width: 15%;
+                min-width: 15%;
+                max-width: 15%;
+                padding-right: 10px;
+                font-size: 1.2em;
+                color: $dark-color;
+            }
+
+            .border {
+                border-right: 2px solid $light-color;
+            }
+        }
+    }
+
+    ion-item {
+        height: 16px;
+        font-size: 18px;
+        border-bottom:1px solid $dark-color;
+    }
+
+    ion-card {
+        width: 100%;
+    }
+}

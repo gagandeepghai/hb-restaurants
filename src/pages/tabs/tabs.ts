@@ -25,7 +25,6 @@ export class TabsPage implements OnInit {
   }
 
   inferUserContext(context) {
-    console.log("subscribe context: " +JSON.stringify(context));
    if(!context) {
       this.userContextTitle = "Login";
       this.tabForUserContext = LoginPage;
@@ -36,7 +35,7 @@ export class TabsPage implements OnInit {
   }
 
   ngOnInit(){
-    console.log("subscribe");
+    this.userService.init();
     this.userService.getUserContext().subscribe(userContext => this.inferUserContext(userContext));
   }
 }

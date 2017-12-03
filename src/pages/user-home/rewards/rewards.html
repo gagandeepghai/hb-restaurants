@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button id="cancelButton" (tap)="dismiss({})"><small>Back</small></button>
+    </ion-buttons>
+    <ion-title>
+    <ion-icon class="title" name="card">&nbsp;&nbsp;Promotions</ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="no-scroll body-bg">
+    <div class="content">
+        <div *ngIf="rewards.length == 0" class="nothing">
+            <ion-row no-padding no-margin>
+              <ion-col no-padding no-margin class="lean-padding">
+                <ion-card no-padding no-margin class="card">
+                    <div class="text">No active promotions.</div>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+        </div>
+        <div *ngIf="rewards.length > 0" class="data">
+            <div *ngFor="let reward of rewards">
+                <ion-row no-padding no-margin>
+                    <ion-col no-padding no-margin class="lean-padding">
+                        <ion-card no-padding no-margin class="card">
+                            <ion-row>
+                                <ion-col>
+                                    <div class="code">{{reward.code}}</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="pct right">{{reward.percentage}}%</div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="description">
+                                        {{reward.description}}
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="restriction">
+                                        {{reward.restriction}}
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </div>
+    <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

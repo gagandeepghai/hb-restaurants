@@ -1,5 +1,64 @@
 <ion-header>
 </ion-header>
 <ion-content class="no-scroll body-bg">
-  USER_HOME
+  <div class="content">
+    <div class="logo">
+      <div class="punjaabs">
+        <img src="assets/logo/Punjaabs.png">
+      </div>
+    </div>
+    <ion-icon name="paw" class="profile-icon" item-top></ion-icon>
+  </div>
 </ion-content>
+<ion-footer style="padding-bottom: 5px;">
+    <div class="cards">
+      <ion-row no-padding no-margin (tap)="profile()">
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="edit-card">
+            <ion-row>
+              <ion-col width-20 class="icon-col edit-ic">
+                <ion-icon name="create" class="icon right edit-icon" item-top></ion-icon>
+              </ion-col>
+              <ion-col width-80>
+                <span class="text left">Profile</span>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding no-margin (tap)="promos()">
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="reward-card">
+            <ion-row>
+              <ion-col width-20 class="icon-col reward-ic">
+                <ion-icon name="card" class="icon right reward-icon" item-top></ion-icon>
+              </ion-col>
+              <ion-col width-80>
+                <span class="text left">Promotions</span>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding no-margin (tap)="reserve()">
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="promo-card">
+            <ion-row>
+              <ion-col width-20 class="icon-col promo-ic">
+                <ion-icon name="bookmark" class="icon right promo-icon" item-top></ion-icon>
+              </ion-col>
+              <ion-col width-80>
+                <span class="text left">Reservations</span>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="action-btn">
+      <button ion-button block solid icon-left class="lo" (tap)="logout()">
+        <ion-icon name='log-out' class="icon" is-active="false"></ion-icon>
+          <span class="text">Logout</span>
+      </button>
+    </div>
+</ion-footer>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button id="cancelButton" (tap)="dismiss({})"><small>Back</small></button>
+    </ion-buttons>
+    <ion-title>
+    <ion-icon class="title" name="bookmark">&nbsp;&nbsp;Reservation</ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="no-scroll body-bg">
+    <div class="data">
+      <ion-row no-padding no-margin>
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="soon-card">
+            <ion-row>
+              <ion-col class="message">
+                Comming soon
+              </ion-col>
+            </ion-row>
+             <ion-row>
+              <ion-col class="footer">
+                Online Reservation coming soon. You can reach us by phone to reserve.
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <div class="action-btn-container">
+        <button ion-button block solid icon-left class="action-btn" (tap)="call()">
+          <ion-icon name='call' class="icon" is-active="false"></ion-icon>
+              <span class="text">Call To Reserve</span>
+        </button>
+      </div>
+    </div>
+
+    <ion-fab center bottom>
+        <button ion-fab outline class="fab-close" (tap)="dismiss({})"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+</ion-content>

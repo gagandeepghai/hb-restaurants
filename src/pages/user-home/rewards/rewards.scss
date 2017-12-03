@@ -1,0 +1,64 @@
+rewards.ion-page {
+    .content {
+        padding-top: 50px;
+    }
+
+    ion-card {
+        width: 100%;
+    }
+
+    .one {
+         padding-top: 10px;
+    }
+
+    .nothing {
+        .card{
+            border-left: 3px solid #750b26;
+            .text{ 
+                padding: 20px;
+                text-align: center;
+                font-size: 18px;
+                line-height: 40px;
+                font-weight: bold;
+                font-style: italic;
+            }
+        }
+    }
+
+    .data {
+        .card{
+            border-left: 3px solid #00796b;
+            .code {
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 20px;
+            }
+            .pct {
+                padding-right: 10%;
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 20px;
+            }
+            .description {
+                font-weight: bold;
+                font-style: italic;
+                font-size: 10px;
+            }
+            .restriction {
+                color: #750b26;
+                font-weight: bold;
+                font-style: italic;
+                font-size: 10px;
+                
+            }
+        }
+    }
+
+    .lean-padding{
+        padding: 5px;
+    }
+
+    .one-card {
+        border-left: 3px solid #00796b;
+    }
+}

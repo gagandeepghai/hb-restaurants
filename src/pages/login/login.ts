@@ -45,8 +45,9 @@ export class LoginPage implements OnInit {
     }
 
     login() {
+        console.log(JSON.stringify(this.userContext));
         this.submitAttempt = true;
-        if(this.loginForm.invalid) {
+        if(!this.userContext.email || !this.userContext.password) {
             this.showToast("Email and password are required fields.");
         } else {
             let loading: Loading = this.showLoading("Please wait...");
@@ -57,7 +58,9 @@ export class LoginPage implements OnInit {
 
     consumeLoginResponse(data: AuthResponse, loading: Loading) {
         loading.dismiss();
+        console.log(JSON.stringify(data));
         if(data.valid === true) {
+            this.userContext = data.context;
             if(data.isTemporary === true) {
                 this.changePassword();
             } else {
@@ -70,8 +73,10 @@ export class LoginPage implements OnInit {
 
     consumeUserCreateResponse(data: CreateUserResponse, loading: Loading) {
         console.log("Create Response: " +JSON.stringify(data));
+        console.log(JSON.stringify(data));
         loading.dismiss();
         if(data && data.valid === true) {
+             this.userContext = data.context;
             this.moveToUserHome();
         } else {
             this.showAlert('Create Account', data.message);
@@ -126,7 +131,7 @@ export class LoginPage implements OnInit {
         let newFormGroup: FormGroup = new FormGroup({
             email: new FormControl(this.userContext.email, Validators.compose([Validators.maxLength(30), Validators.required])),
             password: new FormControl(this.userContext.password, Validators.compose([Validators.maxLength(30), Validators.required])),
-            name: new FormControl(this.userContext.name, Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]))
+            name: new FormControl(this.userContext.name, Validators.compose([Validators.maxLength(30)]))
         });
         this.loginForm = newFormGroup;
     }

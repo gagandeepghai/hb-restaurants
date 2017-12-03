@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button id="cancelButton" (tap)="dismiss({})"><small>Back</small></button>
+    </ion-buttons>
+    <ion-title>
+    <ion-icon class="title" name="create">&nbsp;&nbsp;Profile</ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="no-scroll body-bg">
+    <div class="data" *ngIf="profile">
+      <ion-row no-padding no-margin>
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="reward-card">
+            <ion-row>
+              <ion-col width-30 class="head">
+                <div>
+                  Rewards
+                </div>
+              </ion-col>
+              <ion-col class="head">
+                <div class="curr">
+                  {{profile.rewards | currency:'AUD':true}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="warning">
+                Expires December 31, 2018
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding no-margin class="form-content">
+        <ion-col no-padding no-margin class="lean-padding">
+          <ion-card no-padding no-margin class="form-card">
+            <div class="heading">
+              Edit Profile
+            </div>
+            <form no-margin no-padding [formGroup]="editForm" novalidate>
+            <ion-list no-margin no-padding>
+              <ion-item>
+                <ion-input placeholder="Full Name" formControlName="name" type="text" [(ngModel)]="profile.name">
+                </ion-input>
+                <ion-icon name="person" item-left class="color-blue border"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="email" type="text" readonly="true" [(ngModel)]="profile.email">
+                </ion-input>
+                <ion-icon name="mail" item-left class="color-blue border"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-input placeholder="Phone Number" formControlName="phone" type="text" [(ngModel)]="profile.phone">
+                </ion-input>
+                <ion-icon name="call" item-left class="color-blue border"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label>Anniversary</ion-label>
+                <ion-select formControlName="anniversary" type="text" [(ngModel)]="profile.anniversary">
+                  <div *ngFor="let month of months">
+                    <ion-option [value]='month'>{{month}}</ion-option>
+                  </div>
+                </ion-select>
+                <ion-icon name="calendar" item-left class="color-blue border"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label>Birthday</ion-label>
+                <ion-select formControlName="birthday" type="text" [(ngModel)]="profile.birthday">
+                  <div *ngFor="let month of months">
+                    <ion-option [value]='month'>{{month}}</ion-option>
+                  </div>
+                </ion-select>
+                <ion-icon name="calendar" item-left class="color-blue border"></ion-icon>
+              </ion-item>
+              </ion-list>
+            </form>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+</ion-content>
+<ion-footer>
+  <div class="action-btn-container">
+        <button ion-button block solid icon-left class="action-btn" (tap)="save()">
+            <ion-icon name='create' class="icon" is-active="false"></ion-icon>
+                <span class="text">Save</span>
+            </button>
+    </div>
+</ion-footer>

@@ -1,0 +1,43 @@
+reserve.ion-page {
+    .data {
+        padding-top: 50px;
+    }
+
+    .soon-card {
+        border-left: 3px solid #750b26;
+        .message {
+            text-align: center;
+            color: #750b26;
+            padding: 10px;
+            font-size: 16px;
+            text-shadow: 0px 0px 0.7px #750b26;
+        }
+
+        .footer {
+            color: #00796b;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 14px;
+        }
+    }
+
+    .lean-padding{
+        padding: 5px;
+    }
+
+    ion-card {
+        width: 100%;
+    }
+    
+    .action-btn-container {
+        padding-top: 20px;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 5%;
+
+        .action-btn {
+            text-align: left;
+            background-color: #00796b;
+        }
+    }
+}

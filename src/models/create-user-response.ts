@@ -1,5 +1,7 @@
+import { UserContext } from './user-context';
+
 export class CreateUserResponse {
     valid: Boolean;
     message: string;
-    session: String;
+    context: UserContext;
 }
