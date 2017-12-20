@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content class="no-scroll body-bg">
     <div class="data" *ngIf="profile">
-      <ion-row no-padding no-margin>
+      <ion-row no-padding no-margin *ngIf="profile.rewards > 0">
         <ion-col no-padding no-margin class="lean-padding">
           <ion-card no-padding no-margin class="reward-card">
             <ion-row>

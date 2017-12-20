@@ -21,7 +21,8 @@ export class RestaurantService {
     private menuCategoriesResourceLocator = "categories/";
     private menuItems = "items/";
     private specialMenu = "special/";
-    private actualBaseUrl = "http://localhost:8080/v1/";
+    // private actualBaseUrl = "http://localhost:8080/v1/";
+    private actualBaseUrl = "http://restaurants-be.herokuapp.com/v1/";
     constructor(private http: Http) { }
 
     getMenuCategories(id: number) : Promise<RestaurantCategory[]> {

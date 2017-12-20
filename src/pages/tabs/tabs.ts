@@ -6,6 +6,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { LocatePage } from '../locate/locate';
 import { MenuPage } from '../menu/menu';
 import { UserService } from '../../providers/user-service';
+import { Platform } from 'ionic-angular';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -21,7 +22,7 @@ export class TabsPage implements OnInit {
 
   activeEventCount: number;
 
-  constructor(private userService: UserService, public navCtrl: NavController) {
+  constructor(private userService: UserService, public navCtrl: NavController, public plt: Platform) {
   }
 
   inferUserContext(context) {
@@ -35,7 +36,9 @@ export class TabsPage implements OnInit {
   }
 
   ngOnInit(){
-    this.userService.init();
+    this.plt.ready().then((readySource) => {
+      this.userService.init();
+    });
     this.userService.getUserContext().subscribe(userContext => this.inferUserContext(userContext));
   }
 }

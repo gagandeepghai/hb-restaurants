@@ -152,14 +152,16 @@ export class LoginPage implements OnInit {
     loginWithFacebook() {
         if(this.platform.is('cordova')) {
             this.userService.loginWithFacebook();
-            this.events.subscribe('fb-login-success', () => this.handleFacebookLoginSuccess());
+            this.events.subscribe('fb-login-success', context => this.handleFacebookLoginSuccess(context));
         } else {
             this.showAlert('Facebook Login', 'Please run on device for native operations.');
         }
     }
 
-    handleFacebookLoginSuccess() {
-        this.moveToUserHome();
+    handleFacebookLoginSuccess(data) {
+        let loading: Loading = this.showLoading("Please wait...");
+        this.userService.createFacebookContext(data.context)
+            .then((data) => this.consumeUserCreateResponse(data, loading));
     }
 
     changePassword() {

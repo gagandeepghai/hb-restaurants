@@ -3,6 +3,6 @@ export class UserContext {
     email: String;
     name: String;
     photo: String;
-    isFacebook: boolean;
+    facebookHandle: String;
     session: String; 
 }

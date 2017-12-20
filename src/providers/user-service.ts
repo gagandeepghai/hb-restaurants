@@ -17,13 +17,15 @@ import { Profile } from '../models/profile';
 
 import 'rxjs/add/operator/toPromise';
 
-const FB_APP_ID: number = 1218138474966242;
+const FB_APP_ID: number = 2106264809601802;
 
 @Injectable()
 export class UserService {
-    private actualBaseUrl = "http://localhost:8080/v1/user/";
-    private actualProfileUrl = "http://localhost:8080/v1/profile";
+    private actualBaseUrl = "http://restaurants-be.herokuapp.com/v1/user/";
+    // private actualBaseUrl = "http://localhost:8080/v1/user/";
+    private actualProfileUrl = "http://restaurants-be.herokuapp.com/v1/profile";
     private createPath = "create";
+    private createFbContextPath = "create/fbcontext";
     private authPath = "auth";
     private authChangePath = "auth/change";
     private generateAuthPath = "auth/generate?email=";
@@ -90,14 +92,7 @@ export class UserService {
         return this._context;
     }
 
-    createDummyContext() : UserContext {
-        let context = new UserContext;
-        context.name = "gagandeepghai";
-        context.email = "gagdeep@gmail.com";
-        return context;
-    }
-
-   getContextObject(): UserContext {
+    getContextObject(): UserContext {
         return this.context.getValue();
     }
 
@@ -155,22 +150,6 @@ export class UserService {
             .catch(response => response.json() as AuthResponse);
     }
 
-    createNewAccount(context): Promise<CreateUserResponse> {
-        let url: string = this.actualBaseUrl + this.createPath;
-
-        let data = {
-            email: context.email,
-            name: context.name,
-            password: context.password,
-            device: this.getDeviceInfo(),
-        };       
-
-        return this.http.post(url, data, this.options)
-            .toPromise()
-            .then(response => response.json() as CreateUserResponse)
-            .catch(response => response.json() as CreateUserResponse);
-    }
-
     getDeviceInfo() {
         if(this.device.uuid) {
             return {
@@ -198,7 +177,7 @@ export class UserService {
         return Promise.resolve(response);
     }
 
-    loginWithFacebook() : boolean{
+    loginWithFacebook() {
         let success: boolean = false;
         Facebook.login(['public_profile', 'user_friends', 'email'])
         .then((res: FacebookLoginResponse) =>
@@ -206,24 +185,62 @@ export class UserService {
                 console.log('Logged into Facebook!', JSON.stringify(res));
                 Facebook.api('me?fields=first_name,last_name,email,picture,gender', null)
                     .then(profileData => this.createUserContextFromFBContext(profileData))
-                    .then(() => this.events.publish('fb-login-success'))
-                    .catch(e => console.log('Error logging into Facebook', e));
+                    .catch(e => {
+                        console.log('Error logging into Facebook', e);
+                         Promise.reject(null);
+                    });
             }
         )
-        .catch(e => console.log('Error logging into Facebook', e));
+        .catch(e => {
+            console.log('Error logging into Facebook', e);
+            Promise.reject(null);
+        });
+    }
 
-        return success;
+    createFacebookContext(context): Promise<CreateUserResponse> {
+        let url: string = this.actualBaseUrl + this.createFbContextPath;
+
+        let data = {
+            email: context.email,
+            name: context.name,
+            password: context.password,
+            device: this.getDeviceInfo(),
+            facebookHandle: context.facebookHandle,
+            photo: context.photo
+        };       
+
+        console.log("data: " +JSON.stringify(data));
+
+        return this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => response.json() as CreateUserResponse)
+            .catch(response => response.json() as CreateUserResponse);
+    }
+
+    createNewAccount(context): Promise<CreateUserResponse> {
+        let url: string = this.actualBaseUrl + this.createPath;
+
+        let data = {
+            email: context.email,
+            name: context.name,
+            password: context.password,
+            device: this.getDeviceInfo()
+        };       
+
+        return this.http.post(url, data, this.options)
+            .toPromise()
+            .then(response => response.json() as CreateUserResponse)
+            .catch(response => response.json() as CreateUserResponse);
     }
 
     createUserContextFromFBContext(profileData) {
         console.log(JSON.stringify(profileData));
         let context = new UserContext;
-        context.name = profileData.first_name + profileData.last_name;
+        context.name = profileData.first_name + ' ' + profileData.last_name;
         context.email = profileData.email;
         context.photo = profileData.picture.data.url;
-        context.isFacebook = true;
+        context.facebookHandle = profileData.id;
 
-        this.context.next(context);
-        return Promise.resolve()
+        this.events.publish('fb-login-success', {'context': context});
     }
 }

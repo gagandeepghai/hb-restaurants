@@ -41,6 +41,8 @@ import { ReviewsComponent  } from '../pages/locate/reviews/reviews';
 import { StarRatingComponent } from '../components/starratingcomponent';
 import { InfoCard } from '../pages/login/card-display/card-display';
 import { Device } from '@ionic-native/device';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // import { RegisterPage} from '../pages/login/login';
 
@@ -111,7 +113,7 @@ import { CallNumber } from '@ionic-native/call-number';
     UserProfile,
     UserReservation
   ],
-  providers: [UserService, RestaurantService, CallNumber, Device,
+  providers: [UserService, RestaurantService, CallNumber, Device, EmailComposer, InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
